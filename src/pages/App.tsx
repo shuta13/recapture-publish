@@ -18,8 +18,8 @@ const Background = styled.div`
   background: ${ props => props.color==='#fff' ? '#1d1d1d' : '#fff' };
 `;
 
-const Render = () => {
-  const pageComponent: string | null = 'about'
+const RenderComponent = () => {
+  const pageComponent: string | null = 'home'
   // まあまあなクソコード、アニメーションの関数も多分ここで叩く
   switch (pageComponent) {
     case 'home' :
@@ -46,7 +46,7 @@ const App: Function = () => {
     <Background color={ theme }>
       <Menu color={ theme }></Menu>
       <Grid color={ theme }></Grid>
-      <Render></Render>
+      <RenderComponent></RenderComponent>
     </Background>
   )
 }
