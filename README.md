@@ -1,2 +1,3 @@
-# recapture
-[![Netlify Status](https://api.netlify.com/api/v1/badges/716b762f-cef6-435d-aa42-1f0d5570a360/deploy-status)](https://app.netlify.com/sites/optimistic-colden-a9d087/deploys)
+# recapture(publish)
+SPA化したい
+[![Netlify Status](https://api.netlify.com/api/v1/badges/ad4f51aa-1741-425e-84f6-de2aa4f4cd15/deploy-status)](https://app.netlify.com/sites/reverent-brattain-c5f9c5/deploys)
