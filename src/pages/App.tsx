@@ -18,6 +18,22 @@ const Background = styled.div`
   background: ${ props => props.color==='#fff' ? '#1d1d1d' : '#fff' };
 `;
 
+const Render = () => {
+  const component: string | null = 'about'
+  switch (component) {
+    case 'home' :
+      return <Home></Home>;
+    case 'about' :
+      return <About></About>;
+    case 'works' :
+      return <Works></Works>;
+    case 'media' : 
+      return <Media></Media>;
+    default : 
+      return <NotFound></NotFound>;
+  }
+}
+
 const App: Function = () => {
   const [ theme, setTheme ] = useState('#1d1d1d');
   useEffect(() => {
@@ -29,7 +45,7 @@ const App: Function = () => {
     <Background color={ theme }>
       <Menu color={ theme }></Menu>
       <Grid color={ theme }></Grid>
-      <Home></Home>
+      <Render></Render>
     </Background>
   )
 }

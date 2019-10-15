@@ -10,6 +10,8 @@ const NotFoundHead = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  z-index: 999999;
 `;
 
 const NotFoundContent = styled.div`
