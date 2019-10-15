@@ -19,8 +19,9 @@ const Background = styled.div`
 `;
 
 const Render = () => {
-  const component: string | null = 'about'
-  switch (component) {
+  const pageComponent: string | null = 'about'
+  // まあまあなクソコード、アニメーションの関数も多分ここで叩く
+  switch (pageComponent) {
     case 'home' :
       return <Home></Home>;
     case 'about' :
