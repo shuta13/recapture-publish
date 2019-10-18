@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 import styled, { keyframes } from 'styled-components';
-import { updateComponent } from '../store/Actions'
 
 const WrapMenu = styled.div`
   z-index: 999999;
@@ -38,6 +38,30 @@ const MenuItem = styled.div`
 
 const Menu: React.FC<{ color: string }> = ({ color }) => {
   const [ hovered, setHovered ] = useState<number | string | null>(null)
+
+  const dispatch = useDispatch();
+
+  const updateComponent = useCallback(
+    (payload: string) => {
+      switch (payload) {
+        case 'home':
+          dispatch({ type: 'HOME' });
+          break;
+        case 'about': 
+          dispatch({ type: 'ABOUT' });
+          break;
+        case 'works':
+          dispatch({ type: 'WORKS' });
+          break;
+        case 'media':
+          dispatch({ type: 'MEDIA' });
+          break;
+        default:
+          dispatch({ type: '' });
+      }
+    },
+    [dispatch]
+  )
 
   // アニメーションの実装
   const onMouseEnterUnderBarStyle = keyframes`
