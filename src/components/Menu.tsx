@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import styled, { keyframes } from 'styled-components';
+
+import { useSelector, useDispatch } from 'react-redux';
 
 const WrapMenu = styled.div`
   z-index: 999999;
@@ -37,6 +39,30 @@ const MenuItem = styled.div`
 
 const Menu: React.FC<{ color: string }> = ({ color }) => {
   const [ hovered, setHovered ] = useState<number | string | null>(null)
+  
+  const dispatch = useDispatch();
+
+  const updateComponent = useCallback(
+    (payload) => {
+      switch (payload) {
+        case 'home':
+          dispatch({ type: 'HOME' });
+          break;
+        case 'about': 
+          dispatch({ type: 'ABOUT' });
+          break;
+        case 'works':
+          dispatch({ type: 'WORKS' });
+          break;
+        case 'media':
+          dispatch({ type: 'MEDIA' });
+          break;
+        default:
+          dispatch({ type: '' });
+      }
+    },
+    [dispatch]
+  )
 
   // アニメーションの実装
   const onMouseEnterUnderBarStyle = keyframes`
@@ -56,7 +82,7 @@ const Menu: React.FC<{ color: string }> = ({ color }) => {
     }
   `
 
-  // ホバーイベント取得するクソコード
+  // ホバーイベント取得し、適用したいkeyframeを返すクソコード
   const getHomeMouseEvent = () => {
     if (hovered === 0) return onMouseEnterUnderBarStyle
     else if (hovered === 'home') return onMouseLeaveUnderBarStyle
@@ -102,25 +128,41 @@ const Menu: React.FC<{ color: string }> = ({ color }) => {
     <WrapMenu>
       <MenuBar>
         <MenuButton>
-          <MenuItem color={ color } onMouseEnter={ () => setHovered(0) } onMouseLeave={ () => setHovered('home') }>
+          <MenuItem
+            color={ color }
+            onMouseEnter={ () => setHovered(0) }
+            onMouseLeave={ () => setHovered('home') }
+            onClick={() => updateComponent('home')}>
             Home
           </MenuItem>
           <HomeUnderBar color={ color } hovered={hovered===0} ></HomeUnderBar>
         </MenuButton>
         <MenuButton>
-          <MenuItem color={ color } onMouseEnter={ () => setHovered(1) } onMouseLeave={ () => setHovered('about') }>
+          <MenuItem
+            color={ color }
+            onMouseEnter={ () => setHovered(1) }
+            onMouseLeave={ () => setHovered('about') }
+            onClick={() => updateComponent('about')}>
             About
           </MenuItem>
           <AboutUnderBar color={ color } hovered={hovered===1}></AboutUnderBar>
         </MenuButton>
         <MenuButton>
-          <MenuItem color={ color } onMouseEnter={ () => setHovered(2) } onMouseLeave={ () => setHovered('works') }>
+          <MenuItem
+            color={ color }
+            onMouseEnter={ () => setHovered(2) }
+            onMouseLeave={ () => setHovered('works') }
+            onClick={() => updateComponent('works')}>
             Works
           </MenuItem>
           <WorksUnderBar color={ color } hovered={hovered===2}></WorksUnderBar>
         </MenuButton>
         <MenuButton>
-          <MenuItem color={ color } onMouseEnter={ () => setHovered(3) } onMouseLeave={ () => setHovered('media') }>
+          <MenuItem
+            color={ color }
+            onMouseEnter={ () => setHovered(3) }
+            onMouseLeave={ () => setHovered('media') }
+            onClick={() => updateComponent('media')}>
             Media
           </MenuItem>
           <MediaUnderBar color={ color } hovered={hovered===3}></MediaUnderBar>

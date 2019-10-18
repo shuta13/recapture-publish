@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import styled from '@emotion/styled';
+import { useSelector } from 'react-redux';
+import styled from 'styled-components';
 
 import Home from './Home';
 import About from './About';
@@ -19,9 +20,9 @@ const Background = styled.div`
 `;
 
 const RenderComponent = () => {
-  const pageComponent: string | null = 'home'
+  const component = useSelector((state: { component: string }) => state.component);
   // まあまあなクソコード、アニメーションの関数も多分ここで叩く
-  switch (pageComponent) {
+  switch (component) {
     case 'home' :
       return <Home></Home>;
     case 'about' :
