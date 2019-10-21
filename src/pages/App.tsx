@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
+import { CSSTransition } from 'react-transition-group';
 
 import Home from './Home';
 import About from './About';
@@ -47,7 +48,9 @@ const App: Function = () => {
     <Background color={ theme }>
       <Menu color={ theme }></Menu>
       <Grid color={ theme }></Grid>
-      <RenderComponent></RenderComponent>
+      <CSSTransition timeout={400} classNames="render">
+        <RenderComponent></RenderComponent>
+      </CSSTransition>
     </Background>
   )
 }

@@ -1,6 +1,8 @@
-import React, { useState, useCallback } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import styled, { keyframes } from 'styled-components';
+
+import { useUpdateClicked, useUpdateClickedMenuItem , useUpdateComponent } from '../store/Actions';
 
 const WrapMenu = styled.div`
   z-index: 999999;
@@ -38,30 +40,12 @@ const MenuItem = styled.div`
 
 const Menu: React.FC<{ color: string }> = ({ color }) => {
   const [ hovered, setHovered ] = useState<number | string | null>(null)
+  const clicked = useSelector((state: { clicked: boolean }) => state.clicked);
+  const clickedMenuItem = useSelector((state: { clickedMenuItem: string }) => state.clickedMenuItem);
 
-  const dispatch = useDispatch();
-
-  const updateComponent = useCallback(
-    (payload: string) => {
-      switch (payload) {
-        case 'home':
-          dispatch({ type: 'HOME' });
-          break;
-        case 'about': 
-          dispatch({ type: 'ABOUT' });
-          break;
-        case 'works':
-          dispatch({ type: 'WORKS' });
-          break;
-        case 'media':
-          dispatch({ type: 'MEDIA' });
-          break;
-        default:
-          dispatch({ type: '' });
-      }
-    },
-    [dispatch]
-  )
+  const updateClicked = useUpdateClicked();
+  const updateClickedMenuItem = useUpdateClickedMenuItem();
+  const updateComponent = useUpdateComponent();
 
   // アニメーションの実装
   const onMouseEnterUnderBarStyle = keyframes`
@@ -83,20 +67,20 @@ const Menu: React.FC<{ color: string }> = ({ color }) => {
 
   // ホバーイベント取得し、適用したいkeyframeを返すクソコード
   const getHomeMouseEvent = () => {
-    if (hovered === 0) return onMouseEnterUnderBarStyle
-    else if (hovered === 'home') return onMouseLeaveUnderBarStyle
+    if (hovered === 0 && clickedMenuItem != 'home') return onMouseEnterUnderBarStyle
+    else if (hovered === 'home' && clickedMenuItem != 'home') return onMouseLeaveUnderBarStyle
   }
   const getAboutMouseEvent = () => {
-    if (hovered === 1) return onMouseEnterUnderBarStyle
-    else if (hovered === 'about') return onMouseLeaveUnderBarStyle
+    if (hovered === 1 && clickedMenuItem != 'about') return onMouseEnterUnderBarStyle
+    else if (hovered === 'about' && clickedMenuItem != 'about') return onMouseLeaveUnderBarStyle
   }
   const getWorksMouseEvent = () => {
-    if (hovered === 2) return onMouseEnterUnderBarStyle
-    else if (hovered === 'works') return onMouseLeaveUnderBarStyle
+    if (hovered === 2 && clickedMenuItem != 'works') return onMouseEnterUnderBarStyle
+    else if (hovered === 'works' && clickedMenuItem != 'works') return onMouseLeaveUnderBarStyle
   }
   const getMediaMouseEvent = () => {
-    if (hovered === 3) return onMouseEnterUnderBarStyle
-    else if (hovered === 'media') return onMouseLeaveUnderBarStyle
+    if (hovered === 3 && clickedMenuItem != 'media') return onMouseEnterUnderBarStyle
+    else if (hovered === 'media' && clickedMenuItem != 'media') return onMouseLeaveUnderBarStyle
   }
 
   const CommonUnderBarStyle = styled.div`
@@ -105,23 +89,51 @@ const Menu: React.FC<{ color: string }> = ({ color }) => {
     border-radius: 3px;
     margin-top: -8px;
 
-    transform: translateX(${({hovered}: {hovered: boolean}) => hovered  ?  "0%" : "-102%" });
+    transform: translateX(${({hovered}: {hovered: boolean}) => hovered ?  "0%" : "-102%" });
     background-color: ${ props => props.color };
   `
 
   // ボタン別のアンダーバーのスタイル(クソコード)
   const HomeUnderBar = styled(CommonUnderBarStyle)`
     animation: ${ getHomeMouseEvent } .42s cubic-bezier(.63,-0.02,.41,.98);
+    transform: translateX(${ () => { if(clickedMenuItem==='home') return "0%" } });
   `
   const AboutUnderBar = styled(CommonUnderBarStyle)`
     animation: ${ getAboutMouseEvent } .42s cubic-bezier(.63,-0.02,.41,.98);
+    transform: translateX(${ () => { if(clickedMenuItem==='about') return "0%" } });
   `
   const WorksUnderBar = styled(CommonUnderBarStyle)`
     animation: ${ getWorksMouseEvent } .42s cubic-bezier(.63,-0.02,.41,.98);
+    transform: translateX(${ () => { if(clickedMenuItem==='works') return "0%" } });
   `
   const MediaUnderBar = styled(CommonUnderBarStyle)`
     animation: ${ getMediaMouseEvent } .42s cubic-bezier(.63,-0.02,.41,.98);
+    transform: translateX(${ () => { if(clickedMenuItem==='media') return "0%" } });
   `
+
+  const onMouseClick = (payload: 'home' | 'about' | 'works' | 'media') => {
+    updateClicked();
+    switch (payload) {
+      case 'home':
+        updateClickedMenuItem('home');
+        updateComponent('home');
+        break;
+      case 'about':
+        updateClickedMenuItem('about');
+        updateComponent('about');
+        break;
+      case 'works':
+        updateClickedMenuItem('works');
+        updateComponent('works');
+        break;
+      case 'media':
+        updateClickedMenuItem('media');
+        updateComponent('media');
+        break;
+      default:
+        return ''
+    }
+  }
 
   return (
     <WrapMenu>
@@ -131,7 +143,7 @@ const Menu: React.FC<{ color: string }> = ({ color }) => {
             color={ color }
             onMouseEnter={ () => setHovered(0) }
             onMouseLeave={ () => setHovered('home') }
-            onClick={() => updateComponent('home')}>
+            onClick={ () => onMouseClick('home') }>
             Home
           </MenuItem>
           <HomeUnderBar color={ color } hovered={hovered===0} ></HomeUnderBar>
@@ -141,7 +153,7 @@ const Menu: React.FC<{ color: string }> = ({ color }) => {
             color={ color }
             onMouseEnter={ () => setHovered(1) }
             onMouseLeave={ () => setHovered('about') }
-            onClick={() => updateComponent('about')}>
+            onClick={ () => {onMouseClick('about')} }>
             About
           </MenuItem>
           <AboutUnderBar color={ color } hovered={hovered===1}></AboutUnderBar>
@@ -151,7 +163,7 @@ const Menu: React.FC<{ color: string }> = ({ color }) => {
             color={ color }
             onMouseEnter={ () => setHovered(2) }
             onMouseLeave={ () => setHovered('works') }
-            onClick={() => updateComponent('works')}>
+            onClick={ () => {onMouseClick('works')} }>
             Works
           </MenuItem>
           <WorksUnderBar color={ color } hovered={hovered===2}></WorksUnderBar>
@@ -161,7 +173,7 @@ const Menu: React.FC<{ color: string }> = ({ color }) => {
             color={ color }
             onMouseEnter={ () => setHovered(3) }
             onMouseLeave={ () => setHovered('media') }
-            onClick={() => updateComponent('media')}>
+            onClick={ () => {onMouseClick('media')} }>
             Media
           </MenuItem>
           <MediaUnderBar color={ color } hovered={hovered===3}></MediaUnderBar>

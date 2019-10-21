@@ -1,0 +1,15 @@
+.render-enter {
+  opacity: 0;
+}
+
+.render-enter .render-enter-active {
+  opacity: 1;
+}
+
+.render-leave {
+  opacity: 1;
+}
+
+.render-leave-active {
+  opacity: 0;
+}

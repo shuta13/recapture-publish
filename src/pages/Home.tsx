@@ -16,7 +16,7 @@ const Title = styled.div`
 `;
 
 const Home: React.FC = () => {
-  const [ theme, setTheme ] = useState('#fff');
+  const [ theme, setTheme ] = useState('#1d1d1d');
   useEffect(() => {
     setTimeout(() => {
       setTheme('#fff');
