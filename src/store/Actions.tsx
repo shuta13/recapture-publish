@@ -74,3 +74,23 @@ export const useUpdateComponentAnimate = () => {
   }, [componentAnimate, dispatch]);
   return updateComponentAnimate;
 };
+
+export const useUpdateCurrentThemeColor = () => {
+  const dispatch = useDispatch();
+  const updateCurrentThemeColor = useCallback(
+    (payload: 'white' | 'black') => {
+      switch (payload) {
+        case 'white':
+          dispatch({ type: 'WHITE_THEME' });
+          break;
+        case 'black':
+          dispatch({ type: 'BLACK_THEME' });
+          break;
+        default:
+          dispatch({ type: '' });
+      }
+    },
+  [dispatch]
+  );
+  return updateCurrentThemeColor;
+}

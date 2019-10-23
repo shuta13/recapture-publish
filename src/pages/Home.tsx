@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { useUpdateComponentAnimate } from '../store/Actions';
+import { useUpdateComponentAnimate, useUpdateCurrentThemeColor } from '../store/Actions';
+
+// 全体の白->黒にかかる時間と合わせる
+const durationTitleAnimate = 1200;
 
 const WrapTitle = styled.div`
   width: 100vw;
@@ -18,29 +21,33 @@ const Title = styled.div`
 `;
 
 const Home: React.FC = () => {
-  const [theme, setTheme] = useState('#1d1d1d');
-  const clickedMenuItem = useSelector(
-    (state: { clickedMenuItem: string }) => state.clickedMenuItem
-  );
   const animate = useSelector(
     (state: { componentAnimate: boolean }) => state.componentAnimate
   );
+  const currentThemeColor = useSelector(
+    (state: { currentThemeColor: string }) => state.currentThemeColor
+  );
   const updateComponentAnimate = useUpdateComponentAnimate();
+  const updateCurrentThemeColor = useUpdateCurrentThemeColor();
+
   useEffect(() => {
-    if (clickedMenuItem === '') {
-      setTimeout(() => {
-        setTheme('#fff');
-      }, 2000);
-    } else {
-      setTheme('#fff');
-    }
     setTimeout(() => {
-      if (!animate) updateComponentAnimate();
-    }, 2400);
+      updateCurrentThemeColor('white');
+    }, durationTitleAnimate);
+    if (currentThemeColor === '#1d1d1d') {
+      setTimeout(() => {
+        if (!animate) updateComponentAnimate();
+      }, durationTitleAnimate + 200);
+    } else {
+      setTimeout(() => {
+        if (!animate) updateComponentAnimate();
+      }, 200);
+    }
   }, []);
+
   return (
     <WrapTitle>
-      <Title color={theme}>Recapture.</Title>
+      <Title color={currentThemeColor}>Recapture.</Title>
     </WrapTitle>
   );
 };

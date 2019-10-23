@@ -1,8 +1,9 @@
 const initState = {
   clicked: false,
-  clickedMenuItem: '',
+  clickedMenuItem: 'home',
   component: 'home',
-  componentAnimate: false
+  componentAnimate: false,
+  currentThemeColor: '#1d1d1d'
 };
 
 const reducer = (state = initState, action: { type: string }) => {
@@ -34,6 +35,11 @@ const reducer = (state = initState, action: { type: string }) => {
       return { ...state, componentAnimate: state.componentAnimate = false };
     case 'FADEOUT':
       return { ...state, componentAnimate: state.componentAnimate = true };
+
+    case 'WHITE_THEME':
+      return { ...state, currentThemeColor: state.currentThemeColor = '#fff' };
+    case 'BLACK_THEME':
+      return { ...state, currentThemeColor: state.currentThemeColor = '#1d1d1d' };
 
     default:
       return state;

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { Transition } from 'react-transition-group';
+import { useUpdateCurrentThemeColor } from '../store/Actions';
 
 import Home from './Home';
 import About from './About';
@@ -10,6 +11,9 @@ import Media from './Media';
 import NotFound from './NotFound';
 import Grid from '../components/Grid';
 import Menu from '../components/Menu';
+
+// 全体の白->黒にかかる時間
+const durationAnimate = 1200;
 
 const Background = styled.div`
   position: absolute;
@@ -41,9 +45,11 @@ const RenderComponent = () => {
 };
 
 const App: React.FC = () => {
-  const [theme, setTheme] = useState('#1d1d1d');
   const animate = useSelector(
     (state: { componentAnimate: boolean }) => state.componentAnimate
+  );
+  const currentThemeColor = useSelector(
+    (state: { currentThemeColor: string }) => state.currentThemeColor
   );
   const duration = 200;
   const defaultStyle = {
@@ -56,17 +62,18 @@ const App: React.FC = () => {
     exiting: { opacity: 0, display: `none` },
     exited: { opacity: 0 }
   };
+  const updateCurrentThemeColor = useUpdateCurrentThemeColor();
 
   useEffect(() => {
     setTimeout(() => {
-      setTheme('#fff');
-    }, 2000);
+      updateCurrentThemeColor('white');
+    }, durationAnimate);
   }, []);
 
   return (
-    <Background color={theme}>
-      <Menu color={theme}></Menu>
-      <Grid color={theme}></Grid>
+    <Background color={currentThemeColor}>
+      <Menu color={currentThemeColor}></Menu>
+      <Grid color={currentThemeColor}></Grid>
       <Transition in={animate} timeout={duration}>
         {state => (
           <div

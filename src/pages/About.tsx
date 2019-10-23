@@ -3,6 +3,8 @@ import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { useUpdateComponentAnimate } from '../store/Actions';
 
+const durationAnimate = 200;
+
 const AppAbout = styled.div`
   width: 100vw;
   height: 100vh;
@@ -20,7 +22,7 @@ const About: React.FC = () => {
   useEffect(() => {
     setTimeout(() => {
       if (!animate) updateComponentAnimate();
-    }, 2400)
+    }, durationAnimate)
   }, [])
   return <AppAbout>うんちぷり</AppAbout>;
 };
