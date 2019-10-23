@@ -1,8 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import styled, { keyframes } from 'styled-components';
 
-import { useUpdateClicked, useUpdateClickedMenuItem , useUpdateComponent } from '../store/Actions';
+import {
+  useUpdateClicked,
+  useUpdateClickedMenuItem,
+  useUpdateComponent,
+  useUpdateComponentAnimate
+} from '../store/Actions';
 
 const WrapMenu = styled.div`
   z-index: 999999;
@@ -35,17 +40,20 @@ const MenuItem = styled.div`
   font-size: 15px;
   font-weight: bold;
 
-  color: ${ props => props.color };
-`
+  color: ${props => props.color};
+`;
 
 const Menu: React.FC<{ color: string }> = ({ color }) => {
-  const [ hovered, setHovered ] = useState<number | string | null>(null)
-  const clicked = useSelector((state: { clicked: boolean }) => state.clicked);
-  const clickedMenuItem = useSelector((state: { clickedMenuItem: string }) => state.clickedMenuItem);
+  const [hovered, setHovered] = useState<number | string | null>(null);
+
+  const clickedMenuItem = useSelector(
+    (state: { clickedMenuItem: string }) => state.clickedMenuItem
+  );
 
   const updateClicked = useUpdateClicked();
   const updateClickedMenuItem = useUpdateClickedMenuItem();
   const updateComponent = useUpdateComponent();
+  const updateComponentAnimate = useUpdateComponentAnimate();
 
   // アニメーションの実装
   const onMouseEnterUnderBarStyle = keyframes`
@@ -55,7 +63,7 @@ const Menu: React.FC<{ color: string }> = ({ color }) => {
     to {
       transform: translateX(0%);
     }
-  `
+  `;
   const onMouseLeaveUnderBarStyle = keyframes`
     from {
       transform: translateX(0%);
@@ -63,25 +71,33 @@ const Menu: React.FC<{ color: string }> = ({ color }) => {
     to {
       transform: translateX(102%);
     }
-  `
+  `;
 
   // ホバーイベント取得し、適用したいkeyframeを返すクソコード
   const getHomeMouseEvent = () => {
-    if (hovered === 0 && clickedMenuItem != 'home') return onMouseEnterUnderBarStyle
-    else if (hovered === 'home' && clickedMenuItem != 'home') return onMouseLeaveUnderBarStyle
-  }
+    if (hovered === 0 && clickedMenuItem !== 'home')
+      return onMouseEnterUnderBarStyle;
+    else if (hovered === 'home' && clickedMenuItem !== 'home')
+      return onMouseLeaveUnderBarStyle;
+  };
   const getAboutMouseEvent = () => {
-    if (hovered === 1 && clickedMenuItem != 'about') return onMouseEnterUnderBarStyle
-    else if (hovered === 'about' && clickedMenuItem != 'about') return onMouseLeaveUnderBarStyle
-  }
+    if (hovered === 1 && clickedMenuItem !== 'about')
+      return onMouseEnterUnderBarStyle;
+    else if (hovered === 'about' && clickedMenuItem !== 'about')
+      return onMouseLeaveUnderBarStyle;
+  };
   const getWorksMouseEvent = () => {
-    if (hovered === 2 && clickedMenuItem != 'works') return onMouseEnterUnderBarStyle
-    else if (hovered === 'works' && clickedMenuItem != 'works') return onMouseLeaveUnderBarStyle
-  }
+    if (hovered === 2 && clickedMenuItem !== 'works')
+      return onMouseEnterUnderBarStyle;
+    else if (hovered === 'works' && clickedMenuItem !== 'works')
+      return onMouseLeaveUnderBarStyle;
+  };
   const getMediaMouseEvent = () => {
-    if (hovered === 3 && clickedMenuItem != 'media') return onMouseEnterUnderBarStyle
-    else if (hovered === 'media' && clickedMenuItem != 'media') return onMouseLeaveUnderBarStyle
-  }
+    if (hovered === 3 && clickedMenuItem !== 'media')
+      return onMouseEnterUnderBarStyle;
+    else if (hovered === 'media' && clickedMenuItem !== 'media')
+      return onMouseLeaveUnderBarStyle;
+  };
 
   const CommonUnderBarStyle = styled.div`
     width: 100%;
@@ -89,27 +105,45 @@ const Menu: React.FC<{ color: string }> = ({ color }) => {
     border-radius: 3px;
     margin-top: -8px;
 
-    transform: translateX(${({hovered}: {hovered: boolean}) => hovered ?  "0%" : "-102%" });
-    background-color: ${ props => props.color };
-  `
+    transform: translateX(
+      ${({ hovered }: { hovered: boolean }) => (hovered ? '0%' : '-102%')}
+    );
+    background-color: ${props => props.color};
+  `;
 
   // ボタン別のアンダーバーのスタイル(クソコード)
   const HomeUnderBar = styled(CommonUnderBarStyle)`
-    animation: ${ getHomeMouseEvent } .42s cubic-bezier(.63,-0.02,.41,.98);
-    transform: translateX(${ () => { if(clickedMenuItem==='home') return "0%" } });
-  `
+    animation: ${getHomeMouseEvent} 0.42s cubic-bezier(0.63, -0.02, 0.41, 0.98);
+    transform: translateX(
+      ${() => {
+        if (clickedMenuItem === 'home') return '0%';
+      }}
+    );
+  `;
   const AboutUnderBar = styled(CommonUnderBarStyle)`
-    animation: ${ getAboutMouseEvent } .42s cubic-bezier(.63,-0.02,.41,.98);
-    transform: translateX(${ () => { if(clickedMenuItem==='about') return "0%" } });
-  `
+    animation: ${getAboutMouseEvent} 0.42s cubic-bezier(0.63, -0.02, 0.41, 0.98);
+    transform: translateX(
+      ${() => {
+        if (clickedMenuItem === 'about') return '0%';
+      }}
+    );
+  `;
   const WorksUnderBar = styled(CommonUnderBarStyle)`
-    animation: ${ getWorksMouseEvent } .42s cubic-bezier(.63,-0.02,.41,.98);
-    transform: translateX(${ () => { if(clickedMenuItem==='works') return "0%" } });
-  `
+    animation: ${getWorksMouseEvent} 0.42s cubic-bezier(0.63, -0.02, 0.41, 0.98);
+    transform: translateX(
+      ${() => {
+        if (clickedMenuItem === 'works') return '0%';
+      }}
+    );
+  `;
   const MediaUnderBar = styled(CommonUnderBarStyle)`
-    animation: ${ getMediaMouseEvent } .42s cubic-bezier(.63,-0.02,.41,.98);
-    transform: translateX(${ () => { if(clickedMenuItem==='media') return "0%" } });
-  `
+    animation: ${getMediaMouseEvent} 0.42s cubic-bezier(0.63, -0.02, 0.41, 0.98);
+    transform: translateX(
+      ${() => {
+        if (clickedMenuItem === 'media') return '0%';
+      }}
+    );
+  `;
 
   const onMouseClick = (payload: 'home' | 'about' | 'works' | 'media') => {
     updateClicked();
@@ -131,56 +165,67 @@ const Menu: React.FC<{ color: string }> = ({ color }) => {
         updateComponent('media');
         break;
       default:
-        return ''
+        break;
     }
-  }
+    updateComponentAnimate();
+  };
 
   return (
     <WrapMenu>
       <MenuBar>
         <MenuButton>
           <MenuItem
-            color={ color }
-            onMouseEnter={ () => setHovered(0) }
-            onMouseLeave={ () => setHovered('home') }
-            onClick={ () => onMouseClick('home') }>
+            color={color}
+            onMouseEnter={() => setHovered(0)}
+            onMouseLeave={() => setHovered('home')}
+            onClick={() => onMouseClick('home')}
+          >
             Home
           </MenuItem>
-          <HomeUnderBar color={ color } hovered={hovered===0} ></HomeUnderBar>
+          <HomeUnderBar color={color} hovered={hovered === 0}></HomeUnderBar>
         </MenuButton>
         <MenuButton>
           <MenuItem
-            color={ color }
-            onMouseEnter={ () => setHovered(1) }
-            onMouseLeave={ () => setHovered('about') }
-            onClick={ () => {onMouseClick('about')} }>
+            color={color}
+            onMouseEnter={() => setHovered(1)}
+            onMouseLeave={() => setHovered('about')}
+            onClick={() => {
+              onMouseClick('about');
+            }}
+          >
             About
           </MenuItem>
-          <AboutUnderBar color={ color } hovered={hovered===1}></AboutUnderBar>
+          <AboutUnderBar color={color} hovered={hovered === 1}></AboutUnderBar>
         </MenuButton>
         <MenuButton>
           <MenuItem
-            color={ color }
-            onMouseEnter={ () => setHovered(2) }
-            onMouseLeave={ () => setHovered('works') }
-            onClick={ () => {onMouseClick('works')} }>
+            color={color}
+            onMouseEnter={() => setHovered(2)}
+            onMouseLeave={() => setHovered('works')}
+            onClick={() => {
+              onMouseClick('works');
+            }}
+          >
             Works
           </MenuItem>
-          <WorksUnderBar color={ color } hovered={hovered===2}></WorksUnderBar>
+          <WorksUnderBar color={color} hovered={hovered === 2}></WorksUnderBar>
         </MenuButton>
         <MenuButton>
           <MenuItem
-            color={ color }
-            onMouseEnter={ () => setHovered(3) }
-            onMouseLeave={ () => setHovered('media') }
-            onClick={ () => {onMouseClick('media')} }>
+            color={color}
+            onMouseEnter={() => setHovered(3)}
+            onMouseLeave={() => setHovered('media')}
+            onClick={() => {
+              onMouseClick('media');
+            }}
+          >
             Media
           </MenuItem>
-          <MediaUnderBar color={ color } hovered={hovered===3}></MediaUnderBar>
+          <MediaUnderBar color={color} hovered={hovered === 3}></MediaUnderBar>
         </MenuButton>
       </MenuBar>
     </WrapMenu>
   );
-}
+};
 
 export default Menu;

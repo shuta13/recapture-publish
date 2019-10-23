@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { CSSTransition } from 'react-transition-group';
+import { Transition } from 'react-transition-group';
 
 import Home from './Home';
 import About from './About';
@@ -17,42 +17,70 @@ const Background = styled.div`
   width: 100vw;
   height: 100vh;
 
-  background: ${ props => props.color==='#fff' ? '#1d1d1d' : '#fff' };
+  background: ${props => (props.color === '#fff' ? '#1d1d1d' : '#fff')};
 `;
 
 const RenderComponent = () => {
-  const component = useSelector((state: { component: string }) => state.component);
+  const component = useSelector(
+    (state: { component: string }) => state.component
+  );
+
   // まあまあなクソコード、アニメーションの関数も多分ここで叩く
   switch (component) {
-    case 'home' :
+    case 'home':
       return <Home></Home>;
-    case 'about' :
+    case 'about':
       return <About></About>;
-    case 'works' :
+    case 'works':
       return <Works></Works>;
-    case 'media' : 
+    case 'media':
       return <Media></Media>;
-    default : 
+    default:
       return <NotFound></NotFound>;
   }
-}
+};
 
-const App: Function = () => {
-  const [ theme, setTheme ] = useState('#1d1d1d');
+const App: React.FC = () => {
+  const [theme, setTheme] = useState('#1d1d1d');
+  const animate = useSelector(
+    (state: { componentAnimate: boolean }) => state.componentAnimate
+  );
+  const duration = 200;
+  const defaultStyle = {
+    transition: `opacity ${duration}ms ease-in-out`,
+    opacity: 0
+  };
+  const transitionStyles: { [key: string]: { [key: string]: number | string } } = {
+    entering: { opacity: 0 },
+    entered: { opacity: 1 },
+    exiting: { opacity: 0, display: `none` },
+    exited: { opacity: 0 }
+  };
+
   useEffect(() => {
     setTimeout(() => {
       setTheme('#fff');
-    }, 2000)
-  })
+    }, 2000);
+  }, []);
+
   return (
-    <Background color={ theme }>
-      <Menu color={ theme }></Menu>
-      <Grid color={ theme }></Grid>
-      <CSSTransition timeout={400} classNames="render">
-        <RenderComponent></RenderComponent>
-      </CSSTransition>
+    <Background color={theme}>
+      <Menu color={theme}></Menu>
+      <Grid color={theme}></Grid>
+      <Transition in={animate} timeout={duration}>
+        {state => (
+          <div
+            style={{
+              ...defaultStyle,
+              ...transitionStyles[state]
+            }}
+          >
+            <RenderComponent></RenderComponent>
+          </div>
+        )}
+      </Transition>
     </Background>
-  )
-}
+  );
+};
 
 export default App;

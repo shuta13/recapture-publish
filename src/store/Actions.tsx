@@ -4,15 +4,12 @@ import { useDispatch, useSelector } from 'react-redux';
 export const useUpdateClicked = () => {
   const clicked = useSelector((state: { clicked: boolean }) => state.clicked);
   const dispatch = useDispatch();
-  const updateClicked = useCallback(
-    () => {
-      if(!clicked) dispatch({ type: 'ON_CLICK' });
-      else dispatch({ type: 'OFF_CLICK' })
-    },
-    [dispatch]
-  );
+  const updateClicked = useCallback(() => {
+    if (!clicked) dispatch({ type: 'ON_CLICK' });
+    else dispatch({ type: 'OFF_CLICK' });
+  }, [clicked, dispatch]);
   return updateClicked;
-}
+};
 
 export const useUpdateClickedMenuItem = () => {
   const dispatch = useDispatch();
@@ -22,7 +19,7 @@ export const useUpdateClickedMenuItem = () => {
         case 'home':
           dispatch({ type: 'CLICKED_MENU_HOME' });
           break;
-        case 'about': 
+        case 'about':
           dispatch({ type: 'CLICKED_MENU_ABOUT' });
           break;
         case 'works':
@@ -38,7 +35,7 @@ export const useUpdateClickedMenuItem = () => {
     [dispatch]
   );
   return updateClickedMenuItem;
-}
+};
 
 export const useUpdateComponent = () => {
   const dispatch = useDispatch();
@@ -48,7 +45,7 @@ export const useUpdateComponent = () => {
         case 'home':
           dispatch({ type: 'HOME' });
           break;
-        case 'about': 
+        case 'about':
           dispatch({ type: 'ABOUT' });
           break;
         case 'works':
@@ -64,4 +61,16 @@ export const useUpdateComponent = () => {
     [dispatch]
   );
   return updateComponent;
-}
+};
+
+export const useUpdateComponentAnimate = () => {
+  const componentAnimate = useSelector(
+    (state: { componentAnimate: boolean }) => state.componentAnimate
+  );
+  const dispatch = useDispatch();
+  const updateComponentAnimate = useCallback(() => {
+    if (!componentAnimate) dispatch({ type: 'FADEOUT' });
+    else dispatch({ type: 'FADEIN' });
+  }, [componentAnimate, dispatch]);
+  return updateComponentAnimate;
+};
