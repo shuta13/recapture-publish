@@ -1,7 +1,7 @@
 const initState = {
   clicked: false,
   clickedMenuItem: 'home',
-  component: 'home',
+  component: '',
   componentAnimate: false,
   currentThemeColor: '#1d1d1d'
 };

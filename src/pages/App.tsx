@@ -31,6 +31,8 @@ const RenderComponent = () => {
 
   // まあまあなクソコード、アニメーションの関数も多分ここで叩く
   switch (component) {
+    case '':
+      return <Home></Home>;
     case 'home':
       return <Home></Home>;
     case 'about':
