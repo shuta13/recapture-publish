@@ -58,7 +58,9 @@ const App: React.FC = () => {
     transition: `opacity ${duration}ms ease-in-out`,
     opacity: 0
   };
-  const transitionStyles: { [key: string]: { [key: string]: number | string } } = {
+  const transitionStyles: {
+    [key: string]: { [key: string]: number | string };
+  } = {
     entering: { opacity: 0 },
     entered: { opacity: 1 },
     exiting: { opacity: 0, display: `none` },
@@ -70,7 +72,7 @@ const App: React.FC = () => {
     setTimeout(() => {
       updateCurrentThemeColor('white');
     }, durationAnimate);
-  }, []);
+  }, [updateCurrentThemeColor]);
 
   return (
     <Background color={currentThemeColor}>

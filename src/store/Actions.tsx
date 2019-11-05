@@ -90,7 +90,7 @@ export const useUpdateCurrentThemeColor = () => {
           dispatch({ type: '' });
       }
     },
-  [dispatch]
+    [dispatch]
   );
   return updateCurrentThemeColor;
-}
+};

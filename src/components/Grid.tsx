@@ -82,16 +82,15 @@ const GridInner = styled.div`
   &:hover::before {
     border-top-color: ${props => props.color};
     border-right-color: ${props => props.color};
-    transition: width .3s, height .3s .3s;
+    transition: width 0.3s, height 0.3s 0.3s;
   }
   &:hover::after {
     border-bottom-color: ${props => props.color};
     border-left-color: ${props => props.color};
-    transition: height .3s, width .3s .3s;
+    transition: height 0.3s, width 0.3s 0.3s;
   }
 
-  z-index: ${baseZIndex+999999};
-
+  z-index: ${baseZIndex + 999999};
 `;
 
 const Grid: React.FC<{ color: string }> = ({ color }) => {

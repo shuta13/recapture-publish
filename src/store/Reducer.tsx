@@ -39,7 +39,10 @@ const reducer = (state = initState, action: { type: string }) => {
     case 'WHITE_THEME':
       return { ...state, currentThemeColor: state.currentThemeColor = '#fff' };
     case 'BLACK_THEME':
-      return { ...state, currentThemeColor: state.currentThemeColor = '#1d1d1d' };
+      return {
+        ...state,
+        currentThemeColor: state.currentThemeColor = '#1d1d1d'
+      };
 
     default:
       return state;

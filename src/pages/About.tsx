@@ -22,11 +22,11 @@ const AppAbout = styled.div`
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-`
+`;
 const AboutImage = styled.img`
   width: 160px;
   height: 160px;
-`
+`;
 
 const AboutDescription = styled.div`
   width: 320px;
@@ -36,7 +36,7 @@ const AboutDescription = styled.div`
   font-size: 12px;
 
   margin-top: 20px;
-`
+`;
 
 const About: React.FC = () => {
   const animate = useSelector(
@@ -46,15 +46,17 @@ const About: React.FC = () => {
   useEffect(() => {
     setTimeout(() => {
       if (!animate) updateComponentAnimate();
-    }, durationAnimate)
-  }, [])
+    }, durationAnimate);
+  }, [animate, updateComponentAnimate]);
   return (
     <WrapAbout>
       <AppAbout>
-        <AboutImage src={icon}></AboutImage>
+        <AboutImage src={icon} alt="logo"></AboutImage>
         <AboutDescription>
           <p>1999年京都生まれ，京都在住．</p>
-          <p>主にWebフロントエンドにおけるSPA開発やUI/UXデザインを行っています．</p>
+          <p>
+            主にWebフロントエンドにおけるSPA開発やUI/UXデザインを行っています．
+          </p>
           <p>音楽・お酒を特に好みます．</p>
           <br></br>
           <p>立命館大学情報理工学部情報理工学科画像・音メディアコース 所属</p>

@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { useUpdateComponentAnimate, useUpdateCurrentThemeColor } from '../store/Actions';
+import {
+  useUpdateComponentAnimate,
+  useUpdateCurrentThemeColor
+} from '../store/Actions';
 
 // 全体の白->黒にかかる時間と合わせる
 const durationTitleAnimate = 1200;
@@ -43,7 +46,12 @@ const Home: React.FC = () => {
         if (!animate) updateComponentAnimate();
       }, 200);
     }
-  }, []);
+  }, [
+    animate,
+    currentThemeColor,
+    updateComponentAnimate,
+    updateCurrentThemeColor
+  ]);
 
   return (
     <WrapTitle>
