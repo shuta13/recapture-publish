@@ -23,9 +23,10 @@
         "name": "typescript-styled-plugin"
       }
     ],
-    "baseUrl": "./",
-    "paths": { "react-scroll-horizontal": ["types/react-scroll-horizontal"] },
-    "typeRoots": ["types", "node_modules/@types"]
+    "typeRoots": [
+      "types",
+      "node_modules/@types"
+    ]
   },
   "include": [
     "src"
