@@ -37,7 +37,7 @@ const MenuButton = styled.span`
 // Linkタグのstyle
 const MenuItem = styled.div`
   font-family: Charmonman;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: bold;
 
   color: ${props => props.color};
@@ -101,7 +101,7 @@ const Menu: React.FC<{ color: string }> = ({ color }) => {
 
   const CommonUnderBarStyle = styled.div`
     width: 100%;
-    height: 2px;
+    height: 1px;
     border-radius: 3px;
     margin-top: -8px;
 
