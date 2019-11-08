@@ -33,7 +33,7 @@ const AboutDescription = styled.div`
   height: 360px;
   color: #fff;
   font-family: Noto Serif JP;
-  font-size: 12px;
+  font-size: 13px;
 
   margin-top: 20px;
 `;
@@ -62,7 +62,7 @@ const About: React.FC = () => {
           <p>立命館大学情報理工学部情報理工学科画像・音メディアコース 所属</p>
           <p>ElevenBack LLC フロントエンドエンジニア・デザイナー</p>
           <p>株式会社タンバリン フロントエンドエンジニア</p>
-          <p>株式会社計数技研 エンジニアアルバイト</p>
+          <p>株式会社計数技研 エンジニア</p>
         </AboutDescription>
       </AppAbout>
     </WrapAbout>

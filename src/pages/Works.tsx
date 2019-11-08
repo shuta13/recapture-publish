@@ -1,8 +1,51 @@
-import React from 'react';
-import HorizontalScroll from 'react-scroll-horizontal';
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import styled from 'styled-components';
+import { useUpdateComponentAnimate } from '../store/Actions';
+
+import ScrollHorizontal from 'react-scroll-horizontal';
+
+const durationAnimate = 200;
+
+const WrapWorks = styled.div`
+  height: 30em;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+`;
+
+const WorksItem = styled.div`
+  width: 500px;
+  height: 480px;
+  background: gray;
+  margin: 0 40px;
+`;
 
 const Works: React.FC = () => {
-  return <div></div>;
+  const parent = { margin: `15em 0` };
+  const animate = useSelector(
+    (state: { componentAnimate: boolean }) => state.componentAnimate
+  );
+  const updateComponentAnimate = useUpdateComponentAnimate();
+  useEffect(() => {
+    setTimeout(() => {
+      if (!animate) updateComponentAnimate();
+    }, durationAnimate);
+  }, [animate, updateComponentAnimate]);
+  return (
+    <WrapWorks style={parent}>
+      <ScrollHorizontal>
+        <WorksItem></WorksItem>
+        <WorksItem></WorksItem>
+        <WorksItem></WorksItem>
+        <WorksItem></WorksItem>
+        <WorksItem></WorksItem>
+        <WorksItem></WorksItem>
+        <WorksItem></WorksItem>
+        <WorksItem></WorksItem>
+      </ScrollHorizontal>
+    </WrapWorks>
+  );
 };
 
 export default Works;
