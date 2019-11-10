@@ -19,6 +19,12 @@ const WorksItem = styled.div`
   height: 480px;
   background: gray;
   margin: 0 40px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: #fff;
 `;
 
 const Works: React.FC = () => {
@@ -35,14 +41,14 @@ const Works: React.FC = () => {
   return (
     <WrapWorks style={parent}>
       <ScrollHorizontal>
-        <WorksItem></WorksItem>
-        <WorksItem></WorksItem>
-        <WorksItem></WorksItem>
-        <WorksItem></WorksItem>
-        <WorksItem></WorksItem>
-        <WorksItem></WorksItem>
-        <WorksItem></WorksItem>
-        <WorksItem></WorksItem>
+        <WorksItem>coming soon</WorksItem>
+        <WorksItem>coming soon</WorksItem>
+        <WorksItem>coming soon</WorksItem>
+        <WorksItem>coming soon</WorksItem>
+        <WorksItem>coming soon</WorksItem>
+        <WorksItem>coming soon</WorksItem>
+        <WorksItem>coming soon</WorksItem>
+        <WorksItem>coming soon</WorksItem>
       </ScrollHorizontal>
     </WrapWorks>
   );
