@@ -79,7 +79,18 @@ const App: React.FC = () => {
 
   return (
     <Background color={currentThemeColor}>
-      {isShowMenu && <Menu color={currentThemeColor}></Menu>}
+      <Transition in={isShowMenu} timeout={duration+500}>
+        {state => (
+          <div
+            style={{
+              ...defaultStyle,
+              ...transitionStyles[state]
+            }}
+          >
+            <Menu color={currentThemeColor}></Menu>
+          </div>
+        )}
+      </Transition>
       <Grid color={currentThemeColor}></Grid>
       <Transition in={animate} timeout={duration}>
         {state => (
