@@ -40,7 +40,7 @@ const Works: React.FC = () => {
   }, [animate, updateComponentAnimate]);
   return (
     <WrapWorks style={parent}>
-      <ScrollHorizontal>
+      <ScrollHorizontal reverseScroll = { true }>
         <WorksItem>coming soon</WorksItem>
         <WorksItem>coming soon</WorksItem>
         <WorksItem>coming soon</WorksItem>
