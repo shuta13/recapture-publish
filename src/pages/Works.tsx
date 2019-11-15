@@ -9,7 +9,7 @@ const durationAnimate = 200;
 
 const WrapWorks = styled.div`
   height: 30em;
-  background: #ffffff;
+  background: #1d1d1d;
   display: flex;
   align-items: center;
 `;
