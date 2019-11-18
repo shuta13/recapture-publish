@@ -54,8 +54,8 @@ const App: React.FC = () => {
     (state: { currentThemeColor: string }) => state.currentThemeColor
   );
   const duration = 200;
-  const [isShowMenu, setIsShowMenu] = useState(false)
-  useState()
+  const [isShowMenu, setIsShowMenu] = useState(false);
+  useState();
   const defaultStyle = {
     transition: `opacity ${duration}ms ease-in-out`,
     opacity: 0
@@ -73,13 +73,13 @@ const App: React.FC = () => {
   useEffect(() => {
     setTimeout(() => {
       updateCurrentThemeColor('white');
-      setIsShowMenu(true)
+      setIsShowMenu(true);
     }, durationAnimate);
   }, [updateCurrentThemeColor]);
 
   return (
     <Background color={currentThemeColor}>
-      <Transition in={isShowMenu} timeout={duration+500}>
+      <Transition in={isShowMenu} timeout={duration + 500}>
         {state => (
           <div
             style={{

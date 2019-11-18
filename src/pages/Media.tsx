@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
-import { useUpdateComponentAnimate } from '../store/Actions'
+import { useUpdateComponentAnimate } from '../store/Actions';
 
 const durationAnimate = 200;
 
@@ -13,7 +13,7 @@ const AppMedia = styled.div`
   align-items: center;
 
   color: #fff;
-`
+`;
 
 const Media: React.FC = () => {
   const animate = useSelector(
