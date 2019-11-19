@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import platform from 'platform';
 import styled from 'styled-components';
 import { Transition } from 'react-transition-group';
-import { useUpdateCurrentThemeColor } from '../store/Actions';
+import { useUpdateCurrentThemeColor, useUpdateIsPC } from '../store/Actions';
 
-import Home from './Home';
-import About from './About';
-import Works from './Works';
-import Media from './Media';
+import Home from '../components/Home/Home';
+import About from '../components/About/About';
+import Works from '../components/Works/Works';
+import Media from '../components/Media/Media';
 import NotFound from './NotFound';
 import Grid from '../components/Grid';
 import Menu from '../components/Menu';
@@ -53,13 +54,20 @@ const App: React.FC = () => {
   const currentThemeColor = useSelector(
     (state: { currentThemeColor: string }) => state.currentThemeColor
   );
+  const isPC = useSelector((state: { isPC: boolean }) => state.isPC);
+
+  const updateCurrentThemeColor = useUpdateCurrentThemeColor();
+  const updateIsPC = useUpdateIsPC();
+
   const duration = 200;
+
   const [isShowMenu, setIsShowMenu] = useState(false);
   useState();
   const defaultStyle = {
     transition: `opacity ${duration}ms ease-in-out`,
     opacity: 0
   };
+
   const transitionStyles: {
     [key: string]: { [key: string]: number | string };
   } = {
@@ -68,14 +76,17 @@ const App: React.FC = () => {
     exiting: { opacity: 0, display: `none` },
     exited: { opacity: 0 }
   };
-  const updateCurrentThemeColor = useUpdateCurrentThemeColor();
 
   useEffect(() => {
+    // UAの判断
+    if (platform.os!.family === 'iOS' || platform.os!.family === 'Android')
+      updateIsPC('exPC');
+
     setTimeout(() => {
       updateCurrentThemeColor('white');
       setIsShowMenu(true);
     }, durationAnimate);
-  }, [updateCurrentThemeColor]);
+  }, [updateCurrentThemeColor, updateIsPC]);
 
   return (
     <Background color={currentThemeColor}>
@@ -87,7 +98,7 @@ const App: React.FC = () => {
               ...transitionStyles[state]
             }}
           >
-            <Menu color={currentThemeColor}></Menu>
+            {isPC && <Menu color={currentThemeColor}></Menu>}
           </div>
         )}
       </Transition>

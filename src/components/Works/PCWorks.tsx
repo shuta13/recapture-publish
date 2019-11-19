@@ -39,6 +39,6 @@ const PCWorks: React.FC = () => {
       </ScrollHorizontal>
     </WrapWorks>
   );
-}
+};
 
 export default PCWorks;

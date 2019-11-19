@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import {
   useUpdateComponentAnimate,
   useUpdateCurrentThemeColor
-} from '../store/Actions';
+} from '../../store/Actions';
 
 // 全体の白->黒にかかる時間と合わせる
 const durationTitleAnimate = 1200;

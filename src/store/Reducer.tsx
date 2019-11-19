@@ -3,7 +3,8 @@ const initState = {
   clickedMenuItem: 'home',
   component: '',
   componentAnimate: false,
-  currentThemeColor: '#1d1d1d'
+  currentThemeColor: '#1d1d1d',
+  isPC: true
 };
 
 const reducer = (state = initState, action: { type: string }) => {
@@ -43,6 +44,11 @@ const reducer = (state = initState, action: { type: string }) => {
         ...state,
         currentThemeColor: state.currentThemeColor = '#1d1d1d'
       };
+
+    case 'PC':
+      return { ...state, isPC: state.isPC = true };
+    case 'EX_PC':
+      return { ...state, isPC: state.isPC = false };
 
     default:
       return state;

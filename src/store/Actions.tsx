@@ -94,3 +94,23 @@ export const useUpdateCurrentThemeColor = () => {
   );
   return updateCurrentThemeColor;
 };
+
+export const useUpdateIsPC = () => {
+  const dispatch = useDispatch();
+  const updateIsPC = useCallback(
+    (payload: 'PC' | 'exPC') => {
+      switch (payload) {
+        case 'PC':
+          dispatch({ type: 'PC' });
+          break;
+        case 'exPC':
+          dispatch({ type: 'EX_PC' });
+          break;
+        default:
+          break;
+      }
+    },
+    [dispatch]
+  );
+  return updateIsPC;
+};

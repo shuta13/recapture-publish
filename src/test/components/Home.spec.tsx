@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Hoge from '../../pages/Home';
+import Hoge from '../../components/Home/Home';
 
 describe('なんか最初からあるやつ書き方キモいので修正', () => {
   test('renders without crashing', () => {

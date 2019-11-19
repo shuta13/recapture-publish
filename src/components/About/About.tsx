@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { useUpdateComponentAnimate } from '../store/Actions';
+import { useUpdateComponentAnimate } from '../../store/Actions';
 
-import icon from '../assets/images/icon.svg';
+import icon from '../../assets/images/icon.svg';
 
 const durationAnimate = 200;
 
