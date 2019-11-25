@@ -6,6 +6,8 @@ import {
   useUpdateCurrentThemeColor
 } from '../../store/Actions';
 
+import Grid from '../Grid';
+
 // 全体の白->黒にかかる時間と合わせる
 const durationTitleAnimate = 1200;
 
@@ -55,6 +57,7 @@ const Home: React.FC = () => {
 
   return (
     <WrapTitle>
+      <Grid color={currentThemeColor}></Grid>
       <Title color={currentThemeColor}>Recapture.</Title>
     </WrapTitle>
   );

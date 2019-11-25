@@ -10,7 +10,6 @@ import About from '../components/About/About';
 import Works from '../components/Works/Works';
 import Media from '../components/Media/Media';
 import NotFound from './NotFound';
-import Grid from '../components/Grid';
 import Menu from '../components/Menu';
 
 // 全体の白->黒にかかる時間
@@ -102,7 +101,7 @@ const App: React.FC = () => {
           </div>
         )}
       </Transition>
-      <Grid color={currentThemeColor}></Grid>
+      {/* <Grid color={currentThemeColor}></Grid> */}
       <Transition in={animate} timeout={duration}>
         {state => (
           <div
