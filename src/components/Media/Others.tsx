@@ -14,7 +14,7 @@ const AppOthers = styled.div`
 
   justify-content: center;
   align-items: center;
-`
+`;
 
 const Others: React.FC = () => {
   return <AppOthers>others</AppOthers>;

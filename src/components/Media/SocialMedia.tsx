@@ -15,11 +15,14 @@ const AppSocialMedia = styled.div`
 
   background: #303030;
   color: #ffffff;
-`
-
+`;
 
 const SocialMedia: React.FC = () => {
-  return <AppSocialMedia>social<br></br>media</AppSocialMedia>;
+  return (
+    <AppSocialMedia>
+      social<br></br>media
+    </AppSocialMedia>
+  );
 };
 
 export default SocialMedia;
