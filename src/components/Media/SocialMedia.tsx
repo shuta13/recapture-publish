@@ -3,50 +3,27 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Transition } from 'react-transition-group';
 
-const WrapSocialMedia = styled.div`
-  width: 240px;
-  height: 240px;
-  border-radius: 20px;
-  margin: 10px 10px;
+import { CommonWrapMedia, CommonChildMedia, CommonWrapIcon } from './common/MediaStyle';
 
-  overflow: hidden;
-`;
-
-const CommonChildSocialMedia = styled.div`
-  width: 240px;
+const ParentSocialMedia = styled.div`
+  width: 480px;
   height: 240px;
-  border-radius: 20px;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: 'Major Mono Display';
-  font-size: 36px;
-  text-align: center;
-  cursor: pointer;
 `;
 
-const TextChildSocialMedia = styled(CommonChildSocialMedia)`
+const TextChildSocialMedia = styled(CommonChildMedia)`
   background: #303030;
   color: #ffffff;
 `;
 
-const IconChildSocialMedia = styled(CommonChildSocialMedia)`
+const IconChildSocialMedia = styled(CommonChildMedia)`
   background: #ffffff;
   color: #ffffff;
 `;
 
-const WrapIcon = styled.div`
-  width: 37px;
-  height: 37px;
-  border-radius: 50%;
-  overflow: hidden;
+const WrapIcon = styled(CommonWrapIcon)`
   background: #303030;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 24px;
-  margin: 0 8px;
-`
+`;
 
 const SocialMedia: React.FC = () => {
   const [isShowIcon, setIsShowIcon] = useState(false);
@@ -57,14 +34,8 @@ const SocialMedia: React.FC = () => {
   const transitedStyle: { [key: string]: { [key: string]: string } } = {
     entered: { transform: `translateX(-100%)` }
   }
-  const ParentSocialMedia = styled.div`
-    width: 480px;
-    height: 240px;
-
-    display: flex;
-  `;
   return (
-    <WrapSocialMedia>
+    <CommonWrapMedia>
         <Transition in={isShowIcon} timeout={0}>
           {state => (
             <div
@@ -92,7 +63,7 @@ const SocialMedia: React.FC = () => {
             </div>
           )}
         </Transition>
-    </WrapSocialMedia>
+    </CommonWrapMedia>
   );
 };
 
