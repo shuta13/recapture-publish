@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Transition } from 'react-transition-group';
 
 const WrapSocialMedia = styled.div`
   width: 240px;
@@ -21,6 +22,7 @@ const CommonChildSocialMedia = styled.div`
   font-family: 'Major Mono Display';
   font-size: 36px;
   text-align: center;
+  cursor: pointer;
 `;
 
 const TextChildSocialMedia = styled(CommonChildSocialMedia)`
@@ -48,33 +50,48 @@ const WrapIcon = styled.div`
 
 const SocialMedia: React.FC = () => {
   const [isShowIcon, setIsShowIcon] = useState(false);
+  const defaultStyle = {
+    transition: `transform ease-in-out 400ms`,
+    transform: `translateX(0%)`
+  }
+  const transitedStyle: { [key: string]: { [key: string]: string } } = {
+    entered: { transform: `translateX(-100%)` }
+  }
   const ParentSocialMedia = styled.div`
     width: 480px;
     height: 240px;
-    background: red;
 
     display: flex;
-    transition: all ease-in-out .4s;
-    transform: ${isShowIcon ? 'translateX(-50%)' : 'translateX(0%)'};
   `;
   return (
     <WrapSocialMedia>
-      <ParentSocialMedia>
-        <TextChildSocialMedia onClick={() => setIsShowIcon(true)}>
-          social<br></br>media
-        </TextChildSocialMedia>
-        <IconChildSocialMedia onClick={() => setIsShowIcon(false)}>
-          <WrapIcon>
-            <FontAwesomeIcon icon={['fab', 'twitter']}></FontAwesomeIcon>
-          </WrapIcon>
-          <WrapIcon>
-            <FontAwesomeIcon icon={['fab', 'facebook-f']}></FontAwesomeIcon>
-          </WrapIcon>
-          <WrapIcon>
-            <FontAwesomeIcon icon={['fab', 'instagram']}></FontAwesomeIcon>
-          </WrapIcon>
-        </IconChildSocialMedia>
-      </ParentSocialMedia>
+        <Transition in={isShowIcon} timeout={0}>
+          {state => (
+            <div
+              style={{
+                ...defaultStyle,
+                ...transitedStyle[state]
+              }}
+            >
+              <ParentSocialMedia>
+                <TextChildSocialMedia onClick={() => setIsShowIcon(!isShowIcon)}>
+                  social<br></br>media
+                </TextChildSocialMedia>
+                <IconChildSocialMedia onClick={() => setIsShowIcon(!isShowIcon)}>
+                  <WrapIcon>
+                    <FontAwesomeIcon icon={['fab', 'twitter']}></FontAwesomeIcon>
+                  </WrapIcon>
+                  <WrapIcon>
+                    <FontAwesomeIcon icon={['fab', 'facebook-f']}></FontAwesomeIcon>
+                  </WrapIcon>
+                  <WrapIcon>
+                    <FontAwesomeIcon icon={['fab', 'soundcloud']}></FontAwesomeIcon>
+                  </WrapIcon>
+                </IconChildSocialMedia>
+              </ParentSocialMedia>
+            </div>
+          )}
+        </Transition>
     </WrapSocialMedia>
   );
 };
