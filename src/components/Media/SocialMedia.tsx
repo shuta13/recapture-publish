@@ -28,7 +28,7 @@ const WrapIcon = styled(CommonWrapIcon)`
 const SocialMedia: React.FC = () => {
   const [isShowIcon, setIsShowIcon] = useState(false);
   const defaultStyle = {
-    transition: `transform ease-in-out 400ms`,
+    transition: `transform cubic-bezier(.51,-0.05,.44,1.07) 600ms`,
     transform: `translateX(0%)`
   }
   const transitedStyle: { [key: string]: { [key: string]: string } } = {
