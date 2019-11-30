@@ -20,7 +20,7 @@ import { far } from '@fortawesome/free-regular-svg-icons';
 library.add(fab, fas, far);
 
 // 全体の白->黒にかかる時間
-const durationAnimate = 1200;
+const durationAnimate = 0;
 
 const Background = styled.div`
   position: absolute;
@@ -65,7 +65,7 @@ const App: React.FC = () => {
   const updateCurrentThemeColor = useUpdateCurrentThemeColor();
   const updateIsPC = useUpdateIsPC();
 
-  const duration = 220;
+  const duration = 200;
 
   const [isShowMenu, setIsShowMenu] = useState(false);
   useState();

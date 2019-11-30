@@ -12,7 +12,7 @@ import './VivusDone.scss';
 import Grid from '../Grid';
 
 // 全体の白->黒にかかる時間と合わせる
-const durationTitleAnimate = 1200;
+const durationTitleAnimate = 0;
 
 const WrapTitle = styled.div`
   width: 100vw;
@@ -27,7 +27,6 @@ const Title = styled.div`
   font-family: 'Sacramento';
   min-width: 320px;
   width: 48vw;
-  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -44,13 +43,12 @@ const Home: React.FC = () => {
   const updateComponentAnimate = useUpdateComponentAnimate();
   const updateCurrentThemeColor = useUpdateCurrentThemeColor();
 
-
   useEffect(() => {
     setTimeout(() => {
-      let vivus = new Vivus('graph', { type:'oneByOne', duration: 600, start: 'autostart', file: Graph }, (e: any) => {
+      let vivus = new Vivus('graph', { type:'oneByOne', duration: 480, start: 'autostart', file: Graph }, (e: any) => {
         e.el.classList.add('done');
       });
-    }, 1100);
+    }, 400);
   }, []);
   useEffect(() => {
     setTimeout(() => {
