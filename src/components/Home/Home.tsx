@@ -50,7 +50,7 @@ const Home: React.FC = () => {
       let vivus = new Vivus('graph', { type:'oneByOne', duration: 600, start: 'autostart', file: Graph }, (e: any) => {
         e.el.classList.add('done');
       });
-    }, 1200)
+    }, 1100);
   }, []);
   useEffect(() => {
     setTimeout(() => {
@@ -74,7 +74,7 @@ const Home: React.FC = () => {
 
   return (
     <div>
-      <Grid color={currentThemeColor}></Grid>
+      {/* <Grid color={currentThemeColor}></Grid> */}
       <WrapTitle>
         <Title id="graph"></Title>
       </WrapTitle>

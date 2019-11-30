@@ -65,7 +65,7 @@ const App: React.FC = () => {
   const updateCurrentThemeColor = useUpdateCurrentThemeColor();
   const updateIsPC = useUpdateIsPC();
 
-  const duration = 200;
+  const duration = 220;
 
   const [isShowMenu, setIsShowMenu] = useState(false);
   useState();
