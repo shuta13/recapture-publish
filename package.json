@@ -20,7 +20,8 @@
     "react-transition-group": "^4.3.0",
     "redux": "^4.0.4",
     "three": "^0.108.0",
-    "typescript": "3.6.3"
+    "typescript": "3.6.3",
+    "vivus": "^0.4.5"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -52,8 +53,10 @@
     "@types/react-transition-group": "^4.2.3",
     "@types/styled-components": "^4.1.19",
     "@types/three": "^0.103.2",
+    "@types/vivus": "^0.4.0",
     "eslint-config-prettier": "^6.3.0",
     "eslint-plugin-prettier": "^3.1.1",
+    "node-sass": "^4.13.0",
     "prettier": "^1.18.2",
     "react-scroll-horizontal": "^1.6.2",
     "styled-components": "^4.4.0"

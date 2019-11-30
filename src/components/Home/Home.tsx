@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
+import Vivus from 'vivus';
+import Graph from '../../assets/images/Recapture.svg';
 import {
   useUpdateComponentAnimate,
   useUpdateCurrentThemeColor
 } from '../../store/Actions';
 
+import './VivusDone.scss';
 import Grid from '../Grid';
 
 // 全体の白->黒にかかる時間と合わせる
@@ -19,13 +22,19 @@ const WrapTitle = styled.div`
   align-items: center;
 `;
 const Title = styled.div`
-  font-family: Sacramento;
-  font-size: 220px;
-
   color: ${props => props.color};
+  font-size: 232px;
+  font-family: 'Sacramento';
+  min-width: 320px;
+  width: 48vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const Home: React.FC = () => {
+  const [fill, setFill] = useState(true);
   const animate = useSelector(
     (state: { componentAnimate: boolean }) => state.componentAnimate
   );
@@ -35,6 +44,14 @@ const Home: React.FC = () => {
   const updateComponentAnimate = useUpdateComponentAnimate();
   const updateCurrentThemeColor = useUpdateCurrentThemeColor();
 
+
+  useEffect(() => {
+    setTimeout(() => {
+      let vivus = new Vivus('graph', { type:'oneByOne', duration: 600, start: 'autostart', file: Graph }, (e: any) => {
+        e.el.classList.add('done');
+      });
+    }, 1200)
+  }, []);
   useEffect(() => {
     setTimeout(() => {
       updateCurrentThemeColor('white');
@@ -56,10 +73,12 @@ const Home: React.FC = () => {
   ]);
 
   return (
-    <WrapTitle>
+    <div>
       <Grid color={currentThemeColor}></Grid>
-      <Title color={currentThemeColor}>Recapture.</Title>
-    </WrapTitle>
+      <WrapTitle>
+        <Title id="graph"></Title>
+      </WrapTitle>
+    </div>
   );
 };
 

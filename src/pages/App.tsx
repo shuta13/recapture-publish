@@ -96,7 +96,7 @@ const App: React.FC = () => {
 
   return (
     <Background color={currentThemeColor}>
-      <Transition in={isShowMenu} timeout={duration + 500}>
+      <Transition in={isShowMenu} timeout={duration + 10000}>
         {state => (
           <div
             style={{
