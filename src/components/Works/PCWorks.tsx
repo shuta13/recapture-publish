@@ -27,7 +27,8 @@ const WorksItem = styled.div`
 
 const WorksImage = styled.div`
   width: 480px;
-  height: 420px;
+  height: auto;
+  min-height: 420px;
   background: url(${Image}) no-repeat center/100%;
 `;
 
