@@ -70,7 +70,7 @@ const App: React.FC = () => {
   const [isShowMenu, setIsShowMenu] = useState(false);
   useState();
   const defaultStyle = {
-    transition: `opacity ${duration}ms ease-in-out`,
+    transition: `opacity ${duration+100}ms ease-in-out`,
     opacity: 0
   };
 
@@ -96,7 +96,7 @@ const App: React.FC = () => {
 
   return (
     <Background color={currentThemeColor}>
-      <Transition in={isShowMenu} timeout={duration + 10000}>
+      <Transition in={isShowMenu} timeout={duration + 8800}>
         {state => (
           <div
             style={{
