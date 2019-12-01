@@ -28,7 +28,7 @@ const WorksItem = styled.div`
 const WorksImage = styled.div`
   width: 480px;
   height: 420px;
-  background-image: url(${Image});
+  background: url(${Image}) no-repeat center/100%;
 `;
 
 
