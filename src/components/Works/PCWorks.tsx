@@ -3,6 +3,8 @@ import styled from 'styled-components';
 
 import ScrollHorizontal from 'react-scroll-horizontal';
 
+import Image from '../../assets/images/nenetti_bug_sheet.jpg';
+
 const WrapWorks = styled.div`
   height: 30em;
   background: #1d1d1d;
@@ -23,12 +25,21 @@ const WorksItem = styled.div`
   color: #fff;
 `;
 
+const WorksImage = styled.div`
+  width: 480px;
+  height: 420px;
+  background-image: url(${Image});
+`;
+
+
 const PCWorks: React.FC = () => {
   const parent = { margin: `15em 0` };
   return (
     <WrapWorks style={parent}>
       <ScrollHorizontal reverseScroll={true}>
-        <WorksItem>coming soon</WorksItem>
+        <WorksItem>
+          <WorksImage></WorksImage>
+        </WorksItem>
         <WorksItem>coming soon</WorksItem>
         <WorksItem>coming soon</WorksItem>
         <WorksItem>coming soon</WorksItem>
