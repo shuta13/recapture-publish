@@ -3,7 +3,8 @@ import styled from 'styled-components';
 
 import ScrollHorizontal from 'react-scroll-horizontal';
 
-import Image from '../../assets/images/nenetti_bug_sheet.jpg';
+import GarellyImage from '../../assets/images/garelly.jpg';
+import ExperimentImage from '../../assets/images/experiment.jpg';
 
 const WrapWorks = styled.div`
   height: 30em;
@@ -15,7 +16,7 @@ const WrapWorks = styled.div`
 const WorksItem = styled.div`
   width: 500px;
   height: 480px;
-  background: gray;
+  background: #2a2a2a;
   margin: 0 40px;
 
   display: flex;
@@ -25,13 +26,19 @@ const WorksItem = styled.div`
   color: #fff;
 `;
 
-const WorksImage = styled.div`
+const CommonWorksImage = styled.div`
   width: 480px;
   height: auto;
   min-height: 420px;
-  background: url(${Image}) no-repeat center/100%;
 `;
 
+const Garelly = styled(CommonWorksImage)`
+  background: url(${GarellyImage}) no-repeat center/100%;
+`;
+
+const Experiment = styled(CommonWorksImage)`
+  background: url(${ExperimentImage}) no-repeat center/100%;
+`;
 
 const PCWorks: React.FC = () => {
   const parent = { margin: `15em 0` };
@@ -39,9 +46,11 @@ const PCWorks: React.FC = () => {
     <WrapWorks style={parent}>
       <ScrollHorizontal reverseScroll={true}>
         <WorksItem>
-          <WorksImage></WorksImage>
+          <Garelly></Garelly>
         </WorksItem>
-        <WorksItem>coming soon</WorksItem>
+        <WorksItem>
+          <Experiment></Experiment>
+        </WorksItem>
         <WorksItem>coming soon</WorksItem>
         <WorksItem>coming soon</WorksItem>
         <WorksItem>coming soon</WorksItem>
