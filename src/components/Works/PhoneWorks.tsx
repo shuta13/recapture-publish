@@ -14,7 +14,7 @@ const AppWorks = styled.div`
 const PhoneWorks: React.FC = () => {
   return (
     <AppWorks>
-      works for phone is coming soon
+      works page for phone is coming soon
     </AppWorks>
   );
 };
