@@ -5,6 +5,9 @@ import ScrollHorizontal from 'react-scroll-horizontal';
 
 import GarellyImage from '../../assets/images/garelly.jpg';
 import ExperimentImage from '../../assets/images/experiment.jpg';
+import ToWayNightImage from '../../assets/images/ToWayNight.jpg';
+import FrontEndConfFlyerImage from '../../assets/images/frontconfflyer.jpg';
+import TransBooksImage from '../../assets/images/transbooks.jpg';
 
 const WrapWorks = styled.div`
   height: 30em;
@@ -41,23 +44,38 @@ const Experiment = styled(CommonWorksImage)`
   background: url(${ExperimentImage}) no-repeat center/100%;
 `;
 
+const ToWayNight = styled(CommonWorksImage)`
+  background: url(${ToWayNightImage}) no-repeat center/100%;
+`;
+
+const FrontEndConfFlyer = styled(CommonWorksImage)`
+  background: url(${FrontEndConfFlyerImage}) no-repeat center/100%;
+`;
+
+const TransBooks = styled(CommonWorksImage)`
+  background: url(${TransBooksImage}) no-repeat center/100%;
+`;
+
 const PCWorks: React.FC = () => {
   const parent = { marginTop: `15em` };
   return (
     <WrapWorks style={parent}>
       <ScrollHorizontal reverseScroll={true}>
         <WorksItem>
+          <TransBooks></TransBooks>
+        </WorksItem>
+        <WorksItem>
+          <FrontEndConfFlyer></FrontEndConfFlyer>
+        </WorksItem>
+        <WorksItem>
           <Garelly></Garelly>
         </WorksItem>
         <WorksItem>
           <Experiment></Experiment>
         </WorksItem>
-        <WorksItem>coming soon</WorksItem>
-        <WorksItem>coming soon</WorksItem>
-        <WorksItem>coming soon</WorksItem>
-        <WorksItem>coming soon</WorksItem>
-        <WorksItem>coming soon</WorksItem>
-        <WorksItem>coming soon</WorksItem>
+        <WorksItem>
+          <ToWayNight></ToWayNight>
+        </WorksItem>
       </ScrollHorizontal>
     </WrapWorks>
   );
