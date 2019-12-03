@@ -11,7 +11,6 @@ const WrapWorks = styled.div`
   background: #1d1d1d;
   display: flex;
   align-items: center;
-  overflow: hidden;
 `;
 
 const WorksItem = styled.div`
@@ -43,7 +42,7 @@ const Experiment = styled(CommonWorksImage)`
 `;
 
 const PCWorks: React.FC = () => {
-  const parent = { margin: `15em 0` };
+  const parent = { marginTop: `15em` };
   return (
     <WrapWorks style={parent}>
       <ScrollHorizontal reverseScroll={true}>
