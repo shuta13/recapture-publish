@@ -33,7 +33,6 @@ const Title = styled.div`
 `;
 
 const Home: React.FC = () => {
-  const [fill, setFill] = useState(true);
   const animate = useSelector(
     (state: { componentAnimate: boolean }) => state.componentAnimate
   );

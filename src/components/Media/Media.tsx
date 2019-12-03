@@ -16,6 +16,8 @@ const WrapMedia = styled.div`
   align-items: center;
 
   color: #fff;
+
+  background: #1d1d1d;
 `;
 
 const AppMedia = styled.div`

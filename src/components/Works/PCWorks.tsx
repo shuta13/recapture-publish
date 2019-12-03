@@ -11,6 +11,7 @@ const WrapWorks = styled.div`
   background: #1d1d1d;
   display: flex;
   align-items: center;
+  overflow: hidden;
 `;
 
 const WorksItem = styled.div`
@@ -24,6 +25,7 @@ const WorksItem = styled.div`
   align-items: center;
 
   color: #fff;
+  filter: drop-shadow(10px, 10px, 100px, #ffffff);
 `;
 
 const CommonWorksImage = styled.div`

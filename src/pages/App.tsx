@@ -24,7 +24,7 @@ const durationAnimate = 0;
 
 const Background = styled.div`
   position: absolute;
-  overflow: hidden;
+  /* overflow: hidden; */
   width: 100vw;
   height: 100vh;
 
@@ -108,7 +108,6 @@ const App: React.FC = () => {
           </div>
         )}
       </Transition>
-      {/* <Grid color={currentThemeColor}></Grid> */}
       <Transition in={animate} timeout={duration}>
         {state => (
           <div
@@ -121,6 +120,13 @@ const App: React.FC = () => {
           </div>
         )}
       </Transition>
+      {!isPC &&
+        <div>
+          <About></About>
+          <Works></Works>
+          <Media></Media>
+        </div>
+      }
     </Background>
   );
 };

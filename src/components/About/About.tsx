@@ -13,6 +13,8 @@ const WrapAbout = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  background: #1d1d1d;
 `;
 
 const AppAbout = styled.div`
