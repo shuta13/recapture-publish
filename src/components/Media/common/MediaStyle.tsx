@@ -22,7 +22,7 @@ export const CommonChildMedia = styled.div`
   cursor: pointer;
 `;
 
-export const CommonWrapIcon = styled.div`
+export const CommonWrapIcon = styled.a`
   width: 37px;
   height: 37px;
   border-radius: 50%;

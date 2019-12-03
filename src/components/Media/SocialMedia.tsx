@@ -23,6 +23,7 @@ const IconChildSocialMedia = styled(CommonChildMedia)`
 
 const WrapIcon = styled(CommonWrapIcon)`
   background: #303030;
+  color: #ffffff;
 `;
 
 const SocialMedia: React.FC = () => {
@@ -49,13 +50,13 @@ const SocialMedia: React.FC = () => {
                   social<br></br>media
                 </TextChildSocialMedia>
                 <IconChildSocialMedia onClick={() => setIsShowIcon(!isShowIcon)}>
-                  <WrapIcon>
+                  <WrapIcon href="https://twitter.com/did0es" target="_blank">
                     <FontAwesomeIcon icon={['fab', 'twitter']}></FontAwesomeIcon>
                   </WrapIcon>
-                  <WrapIcon>
+                  <WrapIcon href="https://www.facebook.com/profile.php?id=100028982675881" target="_blank">
                     <FontAwesomeIcon icon={['fab', 'facebook-f']}></FontAwesomeIcon>
                   </WrapIcon>
-                  <WrapIcon>
+                  <WrapIcon href="https://soundcloud.com/user-858183512" target="_blank">
                     <FontAwesomeIcon icon={['fab', 'soundcloud']}></FontAwesomeIcon>
                   </WrapIcon>
                 </IconChildSocialMedia>

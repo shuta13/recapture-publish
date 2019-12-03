@@ -23,6 +23,7 @@ const IconChildSocialMedia = styled(CommonChildMedia)`
 
 const WrapIcon = styled(CommonWrapIcon)`
   background: #ffffff;
+  color: #1d1d1d;
 `;
 
 const Others: React.FC = () => {
@@ -49,13 +50,13 @@ const Others: React.FC = () => {
                   others
                 </TextChildSocialMedia>
                 <IconChildSocialMedia onClick={() => setIsShowIcon(!isShowIcon)}>
-                  <WrapIcon>
+                  <WrapIcon href="https://github.com/shuta13" target="_blank">
                     <FontAwesomeIcon icon={['fab', 'github-square']}></FontAwesomeIcon>
                   </WrapIcon>
-                  <WrapIcon>
+                  <WrapIcon href="" target="_blank">
                     <FontAwesomeIcon icon={['fas', 'at']}></FontAwesomeIcon>
                   </WrapIcon>
-                  <WrapIcon>
+                  <WrapIcon href="https://blog.did0es.me" target="_blank">
                     <FontAwesomeIcon icon={['fas', 'blog']}></FontAwesomeIcon>
                   </WrapIcon>
                 </IconChildSocialMedia>
