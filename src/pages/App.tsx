@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import platform from 'platform';
 import styled from 'styled-components';
 import { Transition } from 'react-transition-group';
+
 import { useUpdateCurrentThemeColor, useUpdateIsPC } from '../store/Actions';
 
 import Home from '../components/Home/Home';

@@ -28,6 +28,7 @@ const WorksItem = styled.div`
 
   color: #fff;
   filter: drop-shadow(10px, 10px, 100px, #ffffff);
+  cursor: pointer;
 `;
 
 const CommonWorksImage = styled.div`
