@@ -16,7 +16,7 @@ const WrapWorks = styled.div`
   align-items: center;
 `;
 
-const WorksItem = styled.div`
+const WorksItem = styled.a`
   width: 500px;
   height: 480px;
   background: #2a2a2a;
@@ -29,6 +29,8 @@ const WorksItem = styled.div`
   color: #fff;
   filter: drop-shadow(10px, 10px, 100px, #ffffff);
   cursor: pointer;
+
+  text-decoration: none;
 `;
 
 const CommonWorksImage = styled.div`
@@ -62,20 +64,20 @@ const PCWorks: React.FC = () => {
   return (
     <WrapWorks style={parent}>
       <ScrollHorizontal reverseScroll={true}>
-        <WorksItem>
-          <TransBooks></TransBooks>
-        </WorksItem>
-        <WorksItem>
-          <FrontEndConfFlyer></FrontEndConfFlyer>
-        </WorksItem>
-        <WorksItem>
+        <WorksItem href="https://did0es.netlify.com/garelly" target="_blank">
           <Garelly></Garelly>
         </WorksItem>
-        <WorksItem>
+        <WorksItem href="https://experiments.did0es.me" target="_blank">
           <Experiment></Experiment>
         </WorksItem>
-        <WorksItem>
+        <WorksItem href="https://techblog.elevenback.co.jp/entry/2019/11/08/145616" target="_blank">
+          <FrontEndConfFlyer></FrontEndConfFlyer>
+        </WorksItem>
+        <WorksItem href="" target="_blank">
           <ToWayNight></ToWayNight>
+        </WorksItem>
+        <WorksItem>
+          <TransBooks></TransBooks>
         </WorksItem>
       </ScrollHorizontal>
     </WrapWorks>
