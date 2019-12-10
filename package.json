@@ -57,7 +57,7 @@
     "eslint-config-prettier": "6.3.0",
     "eslint-plugin-prettier": "3.1.1",
     "node-sass": "4.13.0",
-    "prettier": "1.18.2",
+    "prettier": "1.19.1",
     "react-scroll-horizontal": "1.6.2",
     "styled-components": "4.4.0"
   }
