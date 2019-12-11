@@ -25,7 +25,7 @@ const Title = styled.div`
   color: ${props => props.color};
   font-size: 232px;
   font-family: 'Sacramento';
-  min-width: 320px;
+  min-width: 300px;
   width: 48vw;
   display: flex;
   justify-content: center;

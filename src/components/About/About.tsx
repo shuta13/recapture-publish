@@ -31,11 +31,11 @@ const AboutImage = styled.img`
 `;
 
 const AboutDescription = styled.div`
-  width: 320px;
+  width: 300px;
   height: 360px;
   color: #fff;
   font-family: Noto Serif JP;
-  font-size: 13px;
+  font-size: 12px;
 
   margin-top: 20px;
 `;
