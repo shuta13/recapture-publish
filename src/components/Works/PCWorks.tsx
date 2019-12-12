@@ -33,10 +33,19 @@ const WorksItem = styled.a`
   text-decoration: none;
 `;
 
+const ClipImage = styled.div`
+  width: 480px;
+  height: 400px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 const CommonWorksImage = styled.div`
   width: 480px;
   height: auto;
-  min-height: 420px;
+  min-height: 400px;
 `;
 
 const Garelly = styled(CommonWorksImage)`
@@ -65,19 +74,29 @@ const PCWorks: React.FC = () => {
     <WrapWorks style={parent}>
       <ScrollHorizontal reverseScroll={true}>
         <WorksItem href="https://did0es.netlify.com/garelly" target="_blank">
-          <Garelly></Garelly>
+          <ClipImage>
+            <Garelly></Garelly>
+          </ClipImage>
         </WorksItem>
         <WorksItem href="https://experiments.did0es.me" target="_blank">
-          <Experiment></Experiment>
+          <ClipImage>
+            <Experiment></Experiment>
+          </ClipImage>
         </WorksItem>
         <WorksItem href="https://techblog.elevenback.co.jp/entry/2019/11/08/145616" target="_blank">
-          <FrontEndConfFlyer></FrontEndConfFlyer>
+          <ClipImage>
+            <FrontEndConfFlyer></FrontEndConfFlyer>
+          </ClipImage>
         </WorksItem>
         <WorksItem href="" target="_blank">
-          <ToWayNight></ToWayNight>
+          <ClipImage>
+            <ToWayNight></ToWayNight>
+          </ClipImage>
         </WorksItem>
         <WorksItem href="" target="_blank">
-          <TransBooks></TransBooks>
+          <ClipImage>
+            <TransBooks></TransBooks>
+          </ClipImage>
         </WorksItem>
       </ScrollHorizontal>
     </WrapWorks>
