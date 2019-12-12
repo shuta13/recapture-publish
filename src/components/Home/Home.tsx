@@ -44,7 +44,7 @@ const Home: React.FC = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      let vivus = new Vivus('graph', { type:'oneByOne', duration: 480, start: 'autostart', file: Graph }, (e: any) => {
+      let vivus = new Vivus('graph', { type:'oneByOne', duration: 480, start: 'autostart', file: Graph }, (e) => {
         e.el.classList.add('done');
       });
     }, 400);
