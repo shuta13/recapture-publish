@@ -76,7 +76,7 @@ const PCWorks: React.FC = () => {
         <WorksItem href="" target="_blank">
           <ToWayNight></ToWayNight>
         </WorksItem>
-        <WorksItem>
+        <WorksItem href="" target="_blank">
           <TransBooks></TransBooks>
         </WorksItem>
       </ScrollHorizontal>
