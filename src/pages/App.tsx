@@ -4,7 +4,11 @@ import platform from 'platform';
 import styled from 'styled-components';
 import { Transition } from 'react-transition-group';
 
-import { useUpdateCurrentThemeColor, useUpdateIsPC } from '../store/Actions';
+import { 
+  useUpdateCurrentThemeColor,
+  useUpdateIsPC,
+  useUpdateIsShowMenu
+} from '../store/Actions';
 
 import Home from '../components/Home/Home';
 import About from '../components/About/About';
@@ -62,13 +66,14 @@ const App: React.FC = () => {
     (state: { currentThemeColor: string }) => state.currentThemeColor
   );
   const isPC = useSelector((state: { isPC: boolean }) => state.isPC);
+  const isShowMenu = useSelector((state: { isShowMenu: boolean }) => state.isShowMenu);
 
   const updateCurrentThemeColor = useUpdateCurrentThemeColor();
   const updateIsPC = useUpdateIsPC();
+  const updateIsShowMenu = useUpdateIsShowMenu();
 
   const duration = 200;
 
-  const [isShowMenu, setIsShowMenu] = useState(false);
   useState();
   const defaultStyle = {
     transition: `opacity ${duration+100}ms ease-in-out`,
@@ -88,11 +93,6 @@ const App: React.FC = () => {
     // UAの判断
     if (platform.os!.family === 'iOS' || platform.os!.family === 'Android')
       updateIsPC('exPC');
-
-    setTimeout(() => {
-      updateCurrentThemeColor('white');
-      setIsShowMenu(true);
-    }, durationAnimate);
   }, [updateCurrentThemeColor, updateIsPC]);
 
   return (

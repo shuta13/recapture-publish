@@ -114,3 +114,23 @@ export const useUpdateIsPC = () => {
   );
   return updateIsPC;
 };
+
+export const useUpdateIsShowMenu = () => {
+  const dispatch = useDispatch();
+  const updateIsShowMenu = useCallback(
+    (payload: 'show' | 'hide') => {
+      switch (payload) {
+        case 'show':
+          dispatch({ type: 'SHOW_MENU' });
+          break;
+        case 'hide':
+          dispatch({ type: 'HIDE_MENU' });
+          break;
+        default:
+          break;
+      }
+    },
+    [dispatch]
+  );
+  return updateIsShowMenu;
+}

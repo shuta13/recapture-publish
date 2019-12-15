@@ -4,7 +4,8 @@ const initState = {
   component: '',
   componentAnimate: false,
   currentThemeColor: '#1d1d1d',
-  isPC: true
+  isPC: true,
+  isShowMenu: false
 };
 
 const reducer = (state = initState, action: { type: string }) => {
@@ -49,6 +50,11 @@ const reducer = (state = initState, action: { type: string }) => {
       return { ...state, isPC: state.isPC = true };
     case 'EX_PC':
       return { ...state, isPC: state.isPC = false };
+
+    case 'SHOW_MENU':
+      return { ...state, isShowMenu: state.isShowMenu = true };
+    case 'HIDE_MENU':
+      return { ...state, isShowMenu: state.isShowMenu = false };
 
     default:
       return state;

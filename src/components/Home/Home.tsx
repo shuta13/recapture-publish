@@ -5,7 +5,8 @@ import Vivus from 'vivus';
 import Graph from '../../assets/images/Recapture.svg';
 import {
   useUpdateComponentAnimate,
-  useUpdateCurrentThemeColor
+  useUpdateCurrentThemeColor,
+  useUpdateIsShowMenu
 } from '../../store/Actions';
 
 import './VivusDone.scss';
@@ -39,14 +40,18 @@ const Home: React.FC = () => {
   const currentThemeColor = useSelector(
     (state: { currentThemeColor: string }) => state.currentThemeColor
   );
+
   const updateComponentAnimate = useUpdateComponentAnimate();
   const updateCurrentThemeColor = useUpdateCurrentThemeColor();
+  const updateIsShowMenu = useUpdateIsShowMenu();
 
   useEffect(() => {
     setTimeout(() => {
       let vivus = new Vivus('graph', { type:'oneByOne', duration: 480, start: 'autostart', file: Graph }, (e: any) => {
         e.el.classList.add('done');
       });
+      updateIsShowMenu('show');
+      updateCurrentThemeColor('white');
     }, 400);
   }, []);
   useEffect(() => {
