@@ -56,8 +56,8 @@ const SocialMedia: React.FC = () => {
                   <WrapIcon href="https://www.facebook.com/profile.php?id=100028982675881" target="_blank">
                     <FontAwesomeIcon icon={['fab', 'facebook-f']}></FontAwesomeIcon>
                   </WrapIcon>
-                  <WrapIcon href="https://soundcloud.com/user-858183512" target="_blank">
-                    <FontAwesomeIcon icon={['fab', 'soundcloud']}></FontAwesomeIcon>
+                  <WrapIcon href="https://www.instagram.com/did0es13/" target="_blank">
+                    <FontAwesomeIcon icon={['fab', 'instagram']}></FontAwesomeIcon>
                   </WrapIcon>
                 </IconChildSocialMedia>
               </ParentSocialMedia>

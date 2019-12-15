@@ -53,8 +53,8 @@ const Others: React.FC = () => {
                   <WrapIcon href="https://github.com/shuta13" target="_blank">
                     <FontAwesomeIcon icon={['fab', 'github-square']}></FontAwesomeIcon>
                   </WrapIcon>
-                  <WrapIcon href="" target="_blank">
-                    <FontAwesomeIcon icon={['fas', 'at']}></FontAwesomeIcon>
+                  <WrapIcon href="https://soundcloud.com/user-858183512" target="_blank">
+                    <FontAwesomeIcon icon={['fab', 'soundcloud']}></FontAwesomeIcon>
                   </WrapIcon>
                   <WrapIcon href="https://blog.did0es.me" target="_blank">
                     <FontAwesomeIcon icon={['fas', 'blog']}></FontAwesomeIcon>
