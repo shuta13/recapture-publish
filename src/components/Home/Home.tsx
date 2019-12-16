@@ -48,10 +48,12 @@ const Home: React.FC = () => {
   useEffect(() => {
     setTimeout(() => {
       let vivus = new Vivus('graph', { type:'oneByOne', duration: 480, start: 'autostart', file: Graph }, (e: any) => {
-        e.el.classList.add('done');
+        if (document.hasFocus()) {
+          e.el.classList.add('done');
+          updateIsShowMenu('show');
+          updateCurrentThemeColor('white');
+        }
       });
-      updateIsShowMenu('show');
-      updateCurrentThemeColor('white');
     }, 400);
   }, []);
   useEffect(() => {
