@@ -6,6 +6,7 @@ import ExperimentImage from '../../assets/images/experiment.jpg';
 import ToWayNightImage from '../../assets/images/ToWayNight.jpg';
 import FrontEndConfFlyerImage from '../../assets/images/frontconfflyer.jpg';
 import TransBooksImage from '../../assets/images/transbooks.jpg';
+import PodcastImage from '../../assets/images/tam-podcast.jpg';
 
 const AppWorks = styled.div`
   width: 100vw;
@@ -60,6 +61,10 @@ const TransBooks = styled(CommonWorksImage)`
   background: url(${TransBooksImage}) no-repeat center/100%;
 `;
 
+const Podcast = styled(CommonWorksImage)`
+  background: url(${PodcastImage}) no-repeat center/100%;
+`;
+
 const PhoneWorks: React.FC = () => {
   return (
     <AppWorks>
@@ -72,6 +77,9 @@ const PhoneWorks: React.FC = () => {
         </ClipImage>
         <ClipImage href="https://techblog.elevenback.co.jp/entry/2019/11/08/145616" target="_blank">
           <FrontEndConfFlyer></FrontEndConfFlyer>
+        </ClipImage>
+        <ClipImage href="https://developers.tam-bourine.co.jp/entry/2019/12/19/190000" target="_blank">
+          <Podcast></Podcast>
         </ClipImage>
         <ClipImage href="" target="_blank">
           <ToWayNight></ToWayNight>
