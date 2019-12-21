@@ -4,7 +4,7 @@ import platform from 'platform';
 import styled from 'styled-components';
 import { Transition } from 'react-transition-group';
 
-import { 
+import {
   useUpdateCurrentThemeColor,
   useUpdateIsPC,
   useUpdateIsShowMenu
@@ -66,7 +66,9 @@ const App: React.FC = () => {
     (state: { currentThemeColor: string }) => state.currentThemeColor
   );
   const isPC = useSelector((state: { isPC: boolean }) => state.isPC);
-  const isShowMenu = useSelector((state: { isShowMenu: boolean }) => state.isShowMenu);
+  const isShowMenu = useSelector(
+    (state: { isShowMenu: boolean }) => state.isShowMenu
+  );
 
   const updateCurrentThemeColor = useUpdateCurrentThemeColor();
   const updateIsPC = useUpdateIsPC();
@@ -76,7 +78,7 @@ const App: React.FC = () => {
 
   useState();
   const defaultStyle = {
-    transition: `opacity ${duration+100}ms ease-in-out`,
+    transition: `opacity ${duration + 100}ms ease-in-out`,
     opacity: 0
   };
 
@@ -121,13 +123,13 @@ const App: React.FC = () => {
           </div>
         )}
       </Transition>
-      {!isPC &&
+      {!isPC && (
         <div>
           <About></About>
           <Works></Works>
           <Media></Media>
         </div>
-      }
+      )}
     </Background>
   );
 };

@@ -32,4 +32,4 @@ export const CommonWrapIcon = styled.a`
   align-items: center;
   font-size: 24px;
   margin: 0 8px;
-`
+`;

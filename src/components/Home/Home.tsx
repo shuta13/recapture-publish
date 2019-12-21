@@ -47,15 +47,19 @@ const Home: React.FC = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      let vivus = new Vivus('graph', { type:'oneByOne', duration: 480, start: 'autostart', file: Graph }, (e: any) => {
-        if (document.hasFocus()) {
-          e.el.classList.add('done');
-          updateIsShowMenu('show');
-          updateCurrentThemeColor('white');
+      let vivus = new Vivus(
+        'graph',
+        { type: 'oneByOne', duration: 480, start: 'autostart', file: Graph },
+        (e: any) => {
+          if (document.hasFocus()) {
+            e.el.classList.add('done');
+            updateIsShowMenu('show');
+            updateCurrentThemeColor('white');
+          }
         }
-      });
+      );
     }, 400);
-  }, []);
+  }, [updateCurrentThemeColor, updateIsShowMenu]);
   useEffect(() => {
     setTimeout(() => {
       updateCurrentThemeColor('white');

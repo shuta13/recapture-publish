@@ -75,13 +75,22 @@ const PhoneWorks: React.FC = () => {
         <ClipImage href="https://did0es.netlify.com/garelly" target="_blank">
           <Garelly></Garelly>
         </ClipImage>
-        <ClipImage href="https://techblog.elevenback.co.jp/entry/2019/11/08/145616" target="_blank">
+        <ClipImage
+          href="https://techblog.elevenback.co.jp/entry/2019/11/08/145616"
+          target="_blank"
+        >
           <FrontEndConfFlyer></FrontEndConfFlyer>
         </ClipImage>
-        <ClipImage href="https://developers.tam-bourine.co.jp/entry/2019/12/19/190000" target="_blank">
+        <ClipImage
+          href="https://developers.tam-bourine.co.jp/entry/2019/12/19/190000"
+          target="_blank"
+        >
           <Podcast></Podcast>
         </ClipImage>
-        <ClipImage href="" target="_blank">
+        <ClipImage
+          href="https://soundcloud.com/user-858183512/to-way-night"
+          target="_blank"
+        >
           <ToWayNight></ToWayNight>
         </ClipImage>
         <ClipImage href="" target="_blank">
