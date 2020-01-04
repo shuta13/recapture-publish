@@ -1,14 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import platform from 'platform';
 import styled from 'styled-components';
 import { Transition } from 'react-transition-group';
 
 import {
   useUpdateCurrentThemeColor,
-  useUpdateIsPC,
   useUpdateIsShowMenu
 } from '../store/Actions';
+import useGetWindowSize from '../components/Hooks/useGetWindowSize';
 
 import Home from '../components/Home/Home';
 import About from '../components/About/About';
@@ -65,18 +64,16 @@ const App: React.FC = () => {
   const currentThemeColor = useSelector(
     (state: { currentThemeColor: string }) => state.currentThemeColor
   );
-  const isPC = useSelector((state: { isPC: boolean }) => state.isPC);
   const isShowMenu = useSelector(
     (state: { isShowMenu: boolean }) => state.isShowMenu
   );
 
   const updateCurrentThemeColor = useUpdateCurrentThemeColor();
-  const updateIsPC = useUpdateIsPC();
   const updateIsShowMenu = useUpdateIsShowMenu();
+  const { width } = useGetWindowSize();
 
   const duration = 200;
 
-  useState();
   const defaultStyle = {
     transition: `opacity ${duration + 100}ms ease-in-out`,
     opacity: 0
@@ -91,12 +88,6 @@ const App: React.FC = () => {
     exited: { opacity: 0 }
   };
 
-  useEffect(() => {
-    // UAの判断
-    if (platform.os!.family === 'iOS' || platform.os!.family === 'Android')
-      updateIsPC('exPC');
-  }, [updateCurrentThemeColor, updateIsPC]);
-
   return (
     <Background color={currentThemeColor}>
       <Transition in={isShowMenu} timeout={600}>
@@ -107,7 +98,7 @@ const App: React.FC = () => {
               ...transitionStyles[state]
             }}
           >
-            {isPC && <Menu color={currentThemeColor}></Menu>}
+            {width > 615 && <Menu color={currentThemeColor}></Menu>}
           </div>
         )}
       </Transition>
@@ -123,7 +114,7 @@ const App: React.FC = () => {
           </div>
         )}
       </Transition>
-      {!isPC && (
+      {width <= 615 && (
         <div>
           <About></About>
           <Works></Works>
