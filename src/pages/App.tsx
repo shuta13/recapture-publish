@@ -5,7 +5,8 @@ import { Transition } from 'react-transition-group';
 
 import {
   useUpdateCurrentThemeColor,
-  useUpdateIsShowMenu
+  useUpdateIsShowMenu,
+  useUpdateComponent
 } from '../store/Actions';
 import useGetWindowSize from '../components/Hooks/useGetWindowSize';
 
@@ -70,15 +71,14 @@ const App: React.FC = () => {
 
   const updateCurrentThemeColor = useUpdateCurrentThemeColor();
   const updateIsShowMenu = useUpdateIsShowMenu();
+  const updateComponent = useUpdateComponent();
   const { width } = useGetWindowSize();
 
   const duration = 200;
-
   const defaultStyle = {
     transition: `opacity ${duration + 100}ms ease-in-out`,
     opacity: 0
   };
-
   const transitionStyles: {
     [key: string]: { [key: string]: number | string };
   } = {
@@ -87,6 +87,8 @@ const App: React.FC = () => {
     exiting: { opacity: 0, display: `none` },
     exited: { opacity: 0 }
   };
+
+  if (width <= 615) updateComponent('home');
 
   return (
     <Background color={currentThemeColor}>
