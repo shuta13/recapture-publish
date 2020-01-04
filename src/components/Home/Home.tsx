@@ -51,11 +51,9 @@ const Home: React.FC = () => {
         'graph',
         { type: 'oneByOne', duration: 480, start: 'autostart', file: Graph },
         (e: any) => {
-          if (document.hasFocus()) {
-            e.el.classList.add('done');
-            updateIsShowMenu('show');
-            updateCurrentThemeColor('white');
-          }
+          e.el.classList.add('done');
+          updateIsShowMenu('show');
+          updateCurrentThemeColor('white');
         }
       );
     }, 400);

@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useUpdateComponentAnimate } from '../../store/Actions';
+import useGetWindowSize from '../../components/Hooks/useGetWindowSize';
 
 import PCWorks from './PCWorks';
 import PhoneWorks from './PhoneWorks';
@@ -11,8 +12,8 @@ const Works: React.FC = () => {
   const animate = useSelector(
     (state: { componentAnimate: boolean }) => state.componentAnimate
   );
-  const isPC = useSelector((state: { isPC: boolean }) => state.isPC);
   const updateComponentAnimate = useUpdateComponentAnimate();
+  const { width } = useGetWindowSize();
 
   useEffect(() => {
     setTimeout(() => {
@@ -21,8 +22,8 @@ const Works: React.FC = () => {
   }, [animate, updateComponentAnimate]);
   return (
     <div>
-      {isPC && <PCWorks></PCWorks>}
-      {!isPC && <PhoneWorks></PhoneWorks>}
+      {width > 615 && <PCWorks></PCWorks>}
+      {width <= 615 && <PhoneWorks></PhoneWorks>}
     </div>
   );
 };
