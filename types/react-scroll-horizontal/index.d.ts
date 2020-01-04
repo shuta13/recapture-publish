@@ -1,1 +1,1 @@
-declare module "react-scroll-horizontal";
+declare module 'react-scroll-horizontal';

@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
-import { useUpdateComponentAnimate } from '../../store/Actions';
+import Fade from 'react-reveal/Fade';
 
+import { useUpdateComponentAnimate } from '../../store/Actions';
 import Others from './Others';
 import SocialMedia from './SocialMedia';
 
@@ -40,10 +41,12 @@ const Media: React.FC = () => {
   }, [animate, updateComponentAnimate]);
   return (
     <WrapMedia>
-      <AppMedia>
-        <SocialMedia></SocialMedia>
-        <Others></Others>
-      </AppMedia>
+      <Fade effect="fadeInUp">
+        <AppMedia>
+          <SocialMedia></SocialMedia>
+          <Others></Others>
+        </AppMedia>
+      </Fade>
     </WrapMedia>
   );
 };

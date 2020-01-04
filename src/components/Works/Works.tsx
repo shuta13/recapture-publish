@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import Fade from 'react-reveal/Fade';
+
 import { useUpdateComponentAnimate } from '../../store/Actions';
 import useGetWindowSize from '../../components/Hooks/useGetWindowSize';
 

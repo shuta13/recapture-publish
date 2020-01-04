@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Fade from 'react-reveal/Fade';
 
 import GarellyImage from '../../assets/images/garelly.jpg';
 import ExperimentImage from '../../assets/images/experiment.jpg';
@@ -68,35 +69,37 @@ const Podcast = styled(CommonWorksImage)`
 const PhoneWorks: React.FC = () => {
   return (
     <AppWorks>
-      <WrapItems>
-        <ClipImage href="https://experiments.did0es.me" target="_blank">
-          <Experiment></Experiment>
-        </ClipImage>
-        <ClipImage href="https://did0es.netlify.com/garelly" target="_blank">
-          <Garelly></Garelly>
-        </ClipImage>
-        <ClipImage
-          href="https://techblog.elevenback.co.jp/entry/2019/11/08/145616"
-          target="_blank"
-        >
-          <FrontEndConfFlyer></FrontEndConfFlyer>
-        </ClipImage>
-        <ClipImage
-          href="https://developers.tam-bourine.co.jp/entry/2019/12/19/190000"
-          target="_blank"
-        >
-          <Podcast></Podcast>
-        </ClipImage>
-        <ClipImage
-          href="https://soundcloud.com/user-858183512/to-way-night"
-          target="_blank"
-        >
-          <ToWayNight></ToWayNight>
-        </ClipImage>
-        <ClipImage href="" target="_blank">
-          <TransBooks></TransBooks>
-        </ClipImage>
-      </WrapItems>
+      <Fade effect="fadeInUp">
+        <WrapItems>
+          <ClipImage href="https://experiments.did0es.me" target="_blank">
+            <Experiment></Experiment>
+          </ClipImage>
+          <ClipImage href="https://did0es.netlify.com/garelly" target="_blank">
+            <Garelly></Garelly>
+          </ClipImage>
+          <ClipImage
+            href="https://techblog.elevenback.co.jp/entry/2019/11/08/145616"
+            target="_blank"
+          >
+            <FrontEndConfFlyer></FrontEndConfFlyer>
+          </ClipImage>
+          <ClipImage
+            href="https://developers.tam-bourine.co.jp/entry/2019/12/19/190000"
+            target="_blank"
+          >
+            <Podcast></Podcast>
+          </ClipImage>
+          <ClipImage
+            href="https://soundcloud.com/user-858183512/to-way-night"
+            target="_blank"
+          >
+            <ToWayNight></ToWayNight>
+          </ClipImage>
+          <ClipImage href="" target="_blank">
+            <TransBooks></TransBooks>
+          </ClipImage>
+        </WrapItems>
+      </Fade>
     </AppWorks>
   );
 };
