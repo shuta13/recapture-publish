@@ -88,7 +88,7 @@ const App: React.FC = () => {
     exited: { opacity: 0 }
   };
 
-  if (width <= 615) updateComponent('home');
+  if (width <= 900) updateComponent('home');
 
   return (
     <Background color={currentThemeColor}>
@@ -100,7 +100,7 @@ const App: React.FC = () => {
               ...transitionStyles[state]
             }}
           >
-            {width > 615 && <Menu color={currentThemeColor}></Menu>}
+            {width > 900 && <Menu color={currentThemeColor}></Menu>}
           </div>
         )}
       </Transition>
@@ -116,7 +116,7 @@ const App: React.FC = () => {
           </div>
         )}
       </Transition>
-      {width <= 615 && (
+      {width <= 900 && (
         <div>
           <About></About>
           <Works></Works>

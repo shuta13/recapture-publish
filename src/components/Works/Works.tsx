@@ -24,8 +24,8 @@ const Works: React.FC = () => {
   }, [animate, updateComponentAnimate]);
   return (
     <div>
-      {width > 615 && <PCWorks></PCWorks>}
-      {width <= 615 && <PhoneWorks></PhoneWorks>}
+      {width > 900 && <PCWorks></PCWorks>}
+      {width <= 900 && <PhoneWorks></PhoneWorks>}
     </div>
   );
 };
