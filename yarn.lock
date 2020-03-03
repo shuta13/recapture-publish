@@ -9685,10 +9685,10 @@ react-scripts@3.3.0:
   optionalDependencies:
     fsevents "2.1.2"
 
-react-scroll-horizontal@1.6.2:
-  version "1.6.2"
-  resolved "https://registry.yarnpkg.com/react-scroll-horizontal/-/react-scroll-horizontal-1.6.2.tgz#49289d7870a0c06097a1d1d31fdd800261c86374"
-  integrity sha512-8tchQToQ7bBfCLoYRYnnzhz/y5GOKp67VKZ9D3GIHlXMcyvMU1HuCS/zIR+6ZJLneCri4bSAbNLnQ5/2VZF2dQ==
+react-scroll-horizontal@1.6.4:
+  version "1.6.4"
+  resolved "https://registry.yarnpkg.com/react-scroll-horizontal/-/react-scroll-horizontal-1.6.4.tgz#a02e979b3a4f8a20c15ccc1753ec5f1ac99d96f3"
+  integrity sha512-7fpBk8Nrqmi/ICTuFMIDMhq2+4F+6bhE0BwCKvGmTXi6aI6bi0BbtNv8prqL4VGPkc+bjeeqUYwhM5NDsU5MRQ==
   dependencies:
     react-motion "^0.5.2"
 
