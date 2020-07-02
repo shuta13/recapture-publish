@@ -55,7 +55,7 @@
     "@types/three": "0.103.2",
     "@types/vivus": "0.4.0",
     "eslint-config-prettier": "6.9.0",
-    "eslint-plugin-prettier": "3.1.1",
+    "eslint-plugin-prettier": "3.1.4",
     "node-sass": "4.13.0",
     "prettier": "1.19.1",
     "react-scroll-horizontal": "1.6.2",
