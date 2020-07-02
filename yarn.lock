@@ -2138,10 +2138,10 @@
   dependencies:
     three "*"
 
-"@types/vivus@0.4.0":
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/@types/vivus/-/vivus-0.4.0.tgz#902f718f896fd1d8bdc337f7888bdc926dc9fffb"
-  integrity sha1-kC9xj4lv0di9wzf3iIvckm3J//s=
+"@types/vivus@0.4.2":
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/@types/vivus/-/vivus-0.4.2.tgz#9a207711935534f7c5e97d8ec009f96f34f94e79"
+  integrity sha512-3z3cYFFi+gnYMF+oCena8Ny4JiQHYVA96n0Zd4Ild1Zm9tgPaZzapcBa1Cq4YpJghwxTuwYaNLO7NVk8BHPG/w==
 
 "@types/yargs-parser@*":
   version "13.1.0"
