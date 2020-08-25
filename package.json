@@ -19,7 +19,7 @@
     "react-scripts": "3.3.0",
     "react-transition-group": "4.3.0",
     "redux": "4.0.5",
-    "three": "0.108.0",
+    "three": "0.119.1",
     "typescript": "3.7.4",
     "vivus": "0.4.5"
   },
